@@ -1,0 +1,49 @@
+{% load i18n staticfiles %}
+
+<div class="section">
+  <div class="page-header">
+    <h1>Users</h1>
+  </div>
+  <div>
+    <div class="row">
+      <div class="span14">
+      <form>
+        {% include "include/filter_form_snippet.html" with form=filter_form %}
+        <input type="submit" value="Search" class="btn"/>
+      </form>
+      </div>
+      <div class="span2">
+        <a href="{% url "djra.radmin.views.create_user" %}" class="btn">Add User</a>
+      </div>
+    </div>
+    {% load paging_extras %}
+
+    {% paginate query_set from request as results False %}
+    <table class="zebra-striped">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Groups</th>
+          <th>Is Active</th>
+          <th>Online Status</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for result in results.objects %}
+        <tr>
+          <td class="cell-username"><a ui-sref="app.radmin.user_detail({ username: {{result.username}} })">{{ result.username }}</a></td>
+          <td class="cell-password"><span>{{ result.password }}</span></td>
+          <td>{{ result.groups|join:',' }}</td>
+          <td class="cell-is-active"><span {% if not result.is_active %} class="red">Suspended {% else %}  class="green">Active{% endif %}</span></td>
+          <td class="cell-is-online"><span {% if result.is_online %} class="red">Online {% else %}  class="green">Offline{% endif %}</span></td>
+        </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+    {{ results.paging }}
+  </div>
+</div>
+
+
+

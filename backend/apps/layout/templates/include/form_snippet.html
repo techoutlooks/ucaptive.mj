@@ -1,0 +1,22 @@
+{%  comment %}
+http://django-angular.awesto.com
+Eg. Usage:
+    from djng.styling.bootstrap3.forms import Bootstrap3Form
+    from djng.forms import NgFormValidationMixin
+    class SubscribeForm(NgFormValidationMixin, Bootstrap3Form):
+        ...
+{%  endcomment %}
+
+
+<list-errors errors="$ctrl.errors"></list-errors>
+
+<form name="{{ form.form_name }}" method="post" ng-submit="$ctrl.submitForm({{ form.form_name }})" novalidate>
+    {% csrf_token %}
+    <fieldset ng-disabled="$ctrl.isSubmitting">
+        {{ form.as_div }}
+        <div class="actions">
+            <button type="submit" ng-disabled="{{ form.form_name }}.$invalid" ng-bind="::$ctrl.title" class="btn btn-primary pull-xs-rights"></button>
+        </div>
+    </fieldset>
+</form>
+

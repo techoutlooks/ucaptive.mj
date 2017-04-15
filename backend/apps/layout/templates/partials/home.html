@@ -1,0 +1,39 @@
+{% load i18n staticfiles sekizai_tags %}
+
+<!-- Home Area -->
+<div id="home-area">
+
+	<!-- Home Slider -->
+	<div class="home-slider">
+		<div uib-carousel active="$ctrl.active" interval="$ctrl.myInterval" no-wrap="$ctrl.noWrapSlides">
+
+			<!-- Slide -->
+			<div uib-slide ng-repeat="slide in $ctrl.slides track by slide.id" index="slide.id" active="slide.active">
+                <div ng-style="{'background-image': 'url([[ slide.image ]])', 'height':'727px'}" class="sin-item">
+				<div class="carousel-caption">
+					<h4>Slide [[ slide.id ]]</h4>
+					<p>[[ slide.text ]]</p>
+				</div>
+                </div>
+			</div>
+
+		</div>
+	</div>
+
+
+    <!-- Product widget -->
+	<div class="home-widget-area hidden-sm hidden-xs">
+		<div class="product-widget">
+			<div class="image"><img alt="" src="{% static 'img/widget-product/1.jpg' %}"></div>
+			<div class="content fix">
+				<h2><a href="#">Mammut Mercury <br />Advanced GTX</a></h2>
+				<span>Cool track boots</span>
+				<p class="price">$ 123<sup>99</sup></p>
+				<div class="cart-btn">
+					<a class="add-cart" href="#"><i class="mi-shopping-cart-plus"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

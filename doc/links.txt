@@ -1,0 +1,35 @@
+
+
+
+- factory+args
+https://www.thinkingmedia.ca/2015/01/how-to-create-a-factory-in-angularjs-that-takes-parameters/
+https://github.com/angular/di.js/issues/22
+
+- basics es6 classes
+https://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html
+https://tylermcginnis.com/angularjs-factory-vs-service-vs-provider/
+
+- rectangular
+http://martinmicunda.com/2015/02/09/how-to-start-writing-apps-with-es6-angular-1x-and-jspm/
+https://googlechrome.github.io/samples/classes-es6/
+https://www.aaron-gray.com/service-inheritance-in-angularjs-using-es6/
+https://thinkster.io/angularjs-es6-tutorial#setting-up-a-boilerplate-project-for-angular-1-5-es6
+https://medium.com/@daviddentoom/switching-to-es6-with-angular-1-x-is-easy-a08c40c2fc72#.ezkt3anuy
+
+http://stackoverflow.com/questions/23801731/angularjs-consuming-rest-api-with-restangular-in-a-factory
+https://www.sitepoint.com/understanding-ecmascript-6-class-inheritance/
+
+
+- dep injection
+http://anandmanisankar.com/posts/angularjs-dependency-injection-demystified/
+
+- transpiling
+https://www.caktusgroup.com/blog/2016/05/02/es6-django-lovers/
+
+
+- projects
+https://weblogs.asp.net/dwahlin/creating-custom-angularjs-directives-part-6-using-controllers
+https://www.sitepoint.com/writing-angularjs-apps-using-es6/
+
+- misc
+http://stackoverflow.com/questions/31067368/javascript-es6-class-extend-without-super

@@ -1,0 +1,100 @@
+
+
+sudo npm install npm -g
+
+
+
+
+
+# or the below
+npm init
+npm install gulp --save-dev
+npm install babelify --save-dev             # Transpile ES6 (ES-2015) JS to ordinary JS.
+npm install browserify --save-dev           # Use NPM modules (NodeJS is for server side programming) in the client/browser.
+                                            # (cf. also) vinyl-source-stream
+npm install gulp-connect --save-dev         # Gulp plugin to run a web server with LiveReload for easy development.
+npm install gulp-sourcemaps --save-dev      # Same as debugging symbols mapping in compiling. 
+npm install gulp-buffer --save-dev          # makes browserify bundle compatible with gulp
+                                            # (cf. also) npm install vinyl-source-stream --save-dev  
+npm install gulp-uglify --save-dev
+npm install gulp-tap --save-dev
+npm install yargs --save-dev                # pass host:port to django
+npm install gulp-livereload --save-dev      # runs django
+
+npm install --save-dev babel-preset-es2015  # ??
+
+
+# to start django
+npm install yargs child_process gulp-livereload --save-dev
+
+
+
+ln -s components/node_modules/ .
+
+# gulpfile.js
+
+'use strict';
+
+var gulp = require('gulp');
+var sourcemaps = require('gulp-sourcemaps');
+var buffer = require('gulp-buffer');
+var uglify = require('gulp-uglify');
+var tap = require('gulp-tap');
+var browserify = require('browserify');
+var babel = require('babelify');
+var connect = require('gulp-connect');
+// var gutil = require('gulp-util');
+// var watchify = require('watchify');
+
+
+// Concatenate, Browserify & Minify JS
+gulp.task('build', () => {
+
+  return gulp.src('./assets/js/*.js', { read: false })
+    .pipe(tap((file) => {
+      file.contents = browserify(file.path, {
+        debug: true
+      }).transform(babel, {
+        presets: [ 'es2015' ]
+      }).bundle();
+    }))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./static/debug/js/'));
+    
+});
+
+// 
+gulp.task('watch', function () {
+  gulp.watch('./staticfiles/js/**/*.js', ['build']);
+});
+
+gulp.task('connect', function() {
+    connect.server({
+        livereload: true,
+        port: 3000
+    });
+});
+
+
+// Default Task
+gulp.task('default', function() {
+  // place code for your default task here
+});
+
+gulp.task('default', ['connect', 'build', 'watch',]);
+
+
+https://travismaynard.com/writing/getting-started-with-gulp
+https://github.com/gulpjs/gulp/blob/master/docs/recipes/fast-browserify-builds-with-watchify.md
+https://gist.github.com/nicekiwi/ca575492dfd83504aced26892c559d58
+http://www.tutorialsavvy.com/2015/10/browserify-with-babel-is-babelify.html/
+https://github.com/stefanwalther/es6-debug-webstorm
+https://gist.github.com/alyssaq/bc8b1a34d5d8f3a753da
+https://www.caktusgroup.com/blog/2016/05/02/es6-django-lovers/
+
+Notes
+
+gulp-babel babel-core babel-cli --> binairies?? Orthogonal vs. babelify??

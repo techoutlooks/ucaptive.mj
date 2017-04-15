@@ -1,0 +1,10 @@
+{% extends "one_accounts/base.html" %}
+
+{% block page %}
+<div class="section">
+  <p>
+  You have logged out. 
+  <a href="{% url 'auth_login' %}">Login</a>
+  </p>
+</div>
+{% endblock %}

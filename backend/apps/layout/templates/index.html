@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load i18n staticfiles sekizai_tags %}
+
+
+{% block page %}
+<div ui-view class="pages"></div>
+
+{% addtoblock extra_css %}<link href="{% static 'css/main.css' %}" rel="stylesheet" />{% endaddtoblock %}
+{% endblock %}

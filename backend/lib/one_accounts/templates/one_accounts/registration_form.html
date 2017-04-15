@@ -1,0 +1,37 @@
+{% extends "one_accounts/base.html" %}
+{% load i18n %}
+
+{% comment %}
+**registration/registration_form.html**
+Used to show the form users will fill out to register. By default, has
+the following context:
+
+``form``
+    The registration form. This will be an instance of some subclass
+    of ``django.forms.Form``; consult `Django's forms documentation
+    <http://docs.djangoproject.com/en/dev/topics/forms/>`_ for
+    information on how to display this in a template.
+{% endcomment %}
+
+
+{% block title %}{% trans "Register for an account" %}{% endblock %}
+
+{% block main %}
+<div class="section">
+  <div class="page-header">
+    <h1>{% trans 'Registration' %}</h1>
+  </div>
+  <div class="row">
+    <form method="post" class="big form-b">
+    {% csrf_token %} {{ form.as_p }}
+    <div class="actions">
+        <input type="submit" class="btn primary" value="{% trans 'Register' %}" />
+    </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
+
+
+

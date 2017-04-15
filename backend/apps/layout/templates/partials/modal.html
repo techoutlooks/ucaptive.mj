@@ -1,0 +1,43 @@
+{% load staticfiles %}
+
+{% comment %}
+    AngularJS template for modal window (ui-bootstrap).
+    This template is pointed to by templateUrl from call (Cf. app.cms.services.ModalSvc).
+        uibModal.open({
+            ...
+            templateUrl: /modal/
+        };
+{% endcomment %}
+
+<div oc-lazy-load='[
+    "{% static 'css/modal.css' %}",]'>
+
+    <script type="text/ng-template" id="/body.html">
+        Inside [[$scope.body]]
+        Placeholder for the view pointed to by modalOptions.bodyTemplateUrl".
+        View is injected inside of modal body by the ng-include directive.
+        Usage:
+
+            <code>
+                var modalOptions = {
+                        ...
+                        bodyText: 'Please pick your login service below:'
+                bodyTemplateUrl: '/body.html',
+                };
+                modalSvc.showModal({}, modalOptions)
+            </code>
+        </script>
+
+    <div class="modal-header">
+        <h3>[[modalOptions.headerText]]</h3>
+    </div>
+    <div class="modal-body">
+        <p>[[modalOptions.bodyText]]</p><br/>
+        <div ng-include="modalOptions.bodyTemplateUrl"></div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" data-ng-click="modalOptions.close()">[[modalOptions.closeButtonText]]</button>
+        <button class="btn btn-primary" data-ng-click="modalOptions.ok();">[[modalOptions.actionButtonText]]</button>
+    </div>
+
+</div>

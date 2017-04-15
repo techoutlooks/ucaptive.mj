@@ -1,0 +1,18 @@
+{% load i18n staticfiles %}
+
+
+<div class="section">
+    <div class="page-header">
+        <h1>{% block page_header %}User - {{ raduser.username }} {% endblock %}</h1>
+    </div>
+
+    <div>
+        <ul class="tabs">
+            <li class="active"><a ui-sref="app.radmin.user_detail({ username: {{raduser.username}} })">Basic</a></li>
+            <li><a ui-sref="app.radmin.views.user_sessions({username: {{raduser.username}} })">Session History</a></li>
+        </ul>
+        {% include "include/form_snippet.html" with form=form %}
+   </div>
+</div>
+
+

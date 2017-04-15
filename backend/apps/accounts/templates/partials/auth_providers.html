@@ -1,0 +1,21 @@
+{% load staticfiles %}
+
+{% comment %}
+    Injects template at url "modalOptions.bodyTemplateUrl" inside modal body.
+    Module dependency: ['ui.select', ngSanitize']
+{% endcomment %}
+
+
+<div oc-lazy-load='["{% static 'js/accounts/controllers/auth-providers.controller.js' %}"]'>
+
+    <div ng-controller="{{ controller }}">
+        <ui-select ng-model="selected.value">
+            <ui-select-match>
+                <span ng-bind="$select.selected.name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="item in (authProviders | filter: $select.search) track by item.id">
+                <span ng-bind="item.name"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>

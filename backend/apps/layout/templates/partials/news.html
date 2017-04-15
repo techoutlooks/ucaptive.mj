@@ -1,0 +1,154 @@
+{% load i18n staticfiles %}
+
+<!-- Blog Area -->
+<div id="blog-area" class="pages">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-xs-12">
+				<!-- Blog Category Archive -->
+				<div class="category-archive">
+					<div class="blog-categories">
+						<button class="toggle-btn dropdown-btn category">Categories <i class="mi-caret-down"></i></button>
+						<ul class="dropdown category-dropdown">
+							<li><a href="#">Branding</a></li>
+							<li><a href="#">UX Design</a></li>
+							<li><a href="#">Branding</a></li>
+							<li><a href="#">UX Design</a></li>
+							<li><a href="#">Branding</a></li>
+							<li><a href="#">UX Design</a></li>
+						</ul>
+					</div>
+					<div class="blog-archives">
+						<button class="toggle-btn dropdown-btn archive">Archives <i class="mi-caret-down"></i></button>
+						<ul class="dropdown archive-dropdown">
+							<li><a href="#">2016</a></li>
+							<li><a href="#">2015</a></li>
+							<li><a href="#">2014</a></li>
+							<li><a href="#">2013</a></li>
+							<li><a href="#">2012</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- Blog Container -->
+				<div class="blog-container">
+					<!-- Single Blog -->
+					<div class="sin-blog">
+						<div class="row">
+							<div class="blog-content col-sm-12 col-md-5 col-xs-12">
+								<a href="#" class="author"><img src="{% static 'img/blog-author/1.jpg' %}" alt="author" /> <span>Vlad Vetrov</span></a>
+								<h1 class="title"><a href="#">Wireframing & Prototyping: The Past, Present, and Future</a></h1>
+								<div class="meta">
+									<div class="category"><a href="#">Branding,</a><a href="#">UX Design</a></div>
+									<div class="date"><span>April 20, 2016</span></div>
+								</div>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse. </p>
+								<a href="#" class="read-more">read more</a>
+								<a href="#" class="comments">5</a>
+							</div>
+							<div class="blog-image col-sm-12 col-md-7 col-xs-12">
+								<div class="blog-image-slider owl-carousel">
+									<div class="sin-item"><img src="{% static 'img/blog/1.jpg' %}" alt="blog" /><p>Beautiful moose</p></div>
+									<div class="sin-item"><img src="{% static 'img/blog/2.jpg' %}" alt="blog" /><p>Beautiful moose</p></div>
+								</div>
+								<div class="slide-number"></div>
+							</div>
+						</div>
+					</div>
+					<!-- Single Blog -->
+					<div class="sin-blog">
+						<div class="row">
+							<div class="blog-content col-sm-12 col-md-5 col-xs-12">
+								<a href="#" class="author"><img src="{% static 'img/blog-author/2.jpg' %}" alt="author" /> <span>Garry Pozner</span></a>
+								<h1 class="title"><a href="#">Effective web typography</a></h1>
+								<div class="meta">
+									<div class="category"><a href="#">Branding,</a><a href="#">UX Design</a></div>
+									<div class="date"><span>April 19, 2016</span></div>
+								</div>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse. </p>
+								<a href="#" class="read-more">read more</a>
+								<a href="#" class="comments">97</a>
+							</div>
+							<div class="blog-image col-sm-12 col-md-7 col-xs-12">
+								<div class="blog-image-slider owl-carousel">
+									<div class="sin-item"><img src="{% static 'img/blog/3.jpg' %}" alt="blog" /><p>Beautiful moose</p></div>
+									<div class="sin-item"><img src="{% static 'img/blog/2.jpg' %}" alt="blog" /><p>Beautiful moose</p></div>
+								</div>
+								<div class="slide-number"></div>
+							</div>
+						</div>
+					</div>
+					<!-- Single Blog -->
+					<div class="sin-blog">
+						<div class="row">
+							<div class="blog-content col-sm-12 col-md-5 col-xs-12">
+								<a href="#" class="author"><img src="{% static 'img/blog-author/3.jpg' %}" alt="author" /> <span>Jane Ceecd</span></a>
+								<h1 class="title"><a href="#">conservation. part 3</a></h1>
+								<div class="meta">
+									<div class="category"><a href="#">Branding,</a><a href="#">UX Design</a></div>
+									<div class="date"><span>April 18, 2016</span></div>
+								</div>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse. </p>
+								<a href="#" class="read-more">read more</a>
+								<a href="#" class="comments">7</a>
+							</div>
+							<div class="blog-image col-sm-12 col-md-7 col-xs-12">
+								<img src="{% static 'img/blog/4.jpg' %}" alt="blog" />
+							</div>
+						</div>
+					</div>
+					<!-- Single Blog -->
+					<div class="sin-blog">
+						<div class="row">
+							<div class="blog-content col-sm-12 col-md-5 col-xs-12">
+								<a href="#" class="author"><img src="{% static 'img/blog-author/3.jpg' %}" alt="author" /> <span>Jane Ceecd</span></a><a href="#" class="author"><img src="{% static 'img/blog-author/2.jpg' %}" alt="author" /> <span>Garry Pozner</span></a>
+								<h1 class="title"><a href="#">conservation. part 2</a></h1>
+								<div class="meta">
+									<div class="category"><a href="#">Branding,</a><a href="#">UX Design</a></div>
+									<div class="date"><span>April 17, 2016</span></div>
+								</div>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse. </p>
+								<a href="#" class="read-more">read more</a>
+								<a href="#" class="comments">3</a>
+							</div>
+							<div class="blog-image col-sm-12 col-md-7 col-xs-12">
+								<img src="{% static 'img/blog/5.jpg' %}" alt="blog" />
+							</div>
+						</div>
+					</div>
+					<!-- Single Blog -->
+					<div class="sin-blog">
+						<div class="row">
+							<div class="blog-content col-sm-12 col-md-5 col-xs-12">
+								<a href="#" class="author"><img src="{% static 'img/blog-author/3.jpg' %}" alt="author" /> <span>Jane Ceecd</span></a>
+								<h1 class="title"><a href="#">conservation. part 1</a></h1>
+								<div class="meta">
+									<div class="category"><a href="#">Branding,</a><a href="#">UX Design</a></div>
+									<div class="date"><span>April 16, 2016</span></div>
+								</div>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse. </p>
+								<a href="#" class="read-more">read more</a>
+								<a href="#" class="comments">13</a>
+							</div>
+							<div class="blog-image col-sm-12 col-md-7 col-xs-12">
+								<img src="{% static 'img/blog/6.jpg' %}" alt="blog" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Blog Bottom Bar -->
+				<div class="blog-bottom-bar text-center fix">
+					<div class="pagination float-left">
+						<ul>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li class="active"><span>3</span></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+						</ul>
+					</div>
+					<a href="#" class="scroll-top float-right"><i class="mi-arrow-left"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
