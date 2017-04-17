@@ -17,11 +17,12 @@ django-autoslug==1.9.3
 django-classy-tags==0.8.0
 django-compressor==2.1.1
 django-compressor-toolkit==0.6.0
-django-configurations==2.0
+-e git+https://github.com/jazzband/django-configurations.git@a606003c777160fe6141acb9386d0e217c62dd3c#egg=django_configurations
 django-cors-headers==2.0.1
 django-crispy-forms==1.6.1
 django-debug-toolbar==1.6
-django-extensions==1.7.5
+django-environ==0.4.2
+django-extensions==1.7.8
 -e git+https://github.com/divio/django-filer.git@76131197bfee87824599aaac8624ad6ce4e32fbe#egg=django_filer
 django-filter==1.0.1
 django-mptt==0.8.7

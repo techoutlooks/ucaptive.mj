@@ -12,6 +12,6 @@ class Staging(StagingSettingsMixin, Dev):
 
     #todo: debugging only, move to env
     WWW_DIR = '/var/www/html/apps/ucaptive.mj'
-    LOGGING_ROOT = '/srv/log/apps/ucaptive.mj/'
+    LOGGING_DIR = '/srv/log/apps/ucaptive.mj/'
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
     #endofdeleteme

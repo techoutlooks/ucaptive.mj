@@ -46,8 +46,8 @@ class AuthCtrl {
 
                     case this._AuthConstants.USER_LOGIN:
                         this._MikrotikUser.login(this.authType, this.credentials).then(
-                            (res) => { this._$state.go('app.home') },
-                            (err) => { this.err(err) }
+                            (res) => { console.log('Mk login success'); this._$state.go('app.home') },
+                            (err) => { console.log('Mk login failure'); this.err(err) }
                         )
                         break;
 
@@ -71,10 +71,14 @@ class AuthCtrl {
     };
 
     err(msg){
-        this.isSubmitting = false;  
-        this.errors = msg.data.exception;
-        console.log('Auth errors: ' + JSON.stringify(msg.data));
-        Object.assign(this.errors, {errors: msg.data.errors});
+        console.log('Auth errors. msg: ' + JSON.stringify(msg));
+        this.isSubmitting = false;
+        if (msg.data) {
+            this.errors = msg.data.exception;
+            Object.assign(this.errors, {errors: msg.data.errors});
+        } else {
+            this.errors = msg;
+        }
     }
 }
 

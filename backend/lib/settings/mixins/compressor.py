@@ -11,8 +11,8 @@ Requisites:
     (scss) npm install node-sass postcss-cli autoprefixer
 
 """
-
 from os.path import join
+
 
 class CompressorMixin(object):
 
@@ -31,9 +31,9 @@ class CompressorMixin(object):
         finders += ('compressor.finders.CompressorFinder',)
         return finders
 
-#    @property
-#    def COMPRESS_ROOT(self):
-#        return join(self.BASE_DIR, 'dist')
+    # @property
+    # def COMPRESS_ROOT(self):
+    #     return join(self.BASE_DIR, 'dist')
 
 #    @property
 #    def COMPRESS_URL(self):
@@ -58,3 +58,4 @@ class CompressorMixin(object):
         ('text/x-scss', 'compressor_toolkit.precompilers.SCSSCompiler'),
     )
 
+    COMPRESS_ES6_COMPILER_CMD = 'export NODE_PATH="{paths}" && {browserify_bin} "{infile}" -o "{outfile}" --no-bundle-external --node -t [ "{node_modules}/babelify" --presets="{node_modules}/babel-preset-es2015" ]'

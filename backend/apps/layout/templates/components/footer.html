@@ -1,0 +1,14 @@
+{% load i18n %}
+
+<footer class="footer navbar-fixed-bottom">
+  <div class="container">
+    <a class="logo-font" ui-sref="app.home" ng-bind="::$ctrl.appName | lowercase"></a>
+    <a class="logo-font" href="https://jeunesse.gov.gn">{%  trans ".cloud.com.gn" %}</a>
+
+
+    <span class="attribution">
+      &copy; [[ ::$ctrl.date | date:'yyyy' ]].
+      Developped by <a href="https://techoutlooks.com">{%  trans "TechOutlooks Sarl" %}</a>, All Rights Reserved.
+    </span>
+  </div>
+</footer>

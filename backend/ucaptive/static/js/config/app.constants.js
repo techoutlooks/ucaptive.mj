@@ -1,6 +1,8 @@
 const AppConstants = {
     apiUrl: 'http://localhost:8000',
-    mikrotikUrl: 'http://41.223.48.58',
+    // mikrotikUrl: 'https://mjrouter.cloud.com.gn',
+    mikrotikUrl: 'https://192.168.0.2',
+
     twitterApiUrl: null,
     facebookApiUrl: null,
 

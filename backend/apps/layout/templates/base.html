@@ -123,13 +123,15 @@ todo: convert to from...import'';
 {% addtoblock js %}<script src="{% static 'djng/js/django-angular.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/angular-animate/angular-animate.min.js' %}"></script>{% endaddtoblock js %}
 <!-- Angular (app) JS
-============================================ -->
+============================================
 {%  if debug %}
-    <script type="text/javascript" src="{% static 'js/app.min.js' %}"></script>
-{% else %}
     {#{% addtoblock js %}<script type="text/es6" src="{% static 'js/app.js' %}"></script>{% endaddtoblock js %}#}
     {% compress js %}<script type="text/es6" src="{% static 'js/app.js' %}"></script>  {% endcompress %}
+{% else %}
+    <script type="text/javascript" src="{% static 'js/app.min.js' %}"></script>
 {% endif %}
+-->
+<script type="text/javascript" src="{% static 'js/app.min.js' %}"></script>
 
 
 {% render_block "js" postprocessor "compressor.contrib.sekizai.compress" %}

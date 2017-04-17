@@ -1,0 +1,14 @@
+{
+  "name": "jquery.meanmenu",
+  "homepage": "https://github.com/meanthemes/meanMenu",
+  "_release": "bfaa3952ea",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "bfaa3952ea14549b8d68ea39c81d964aad0d2dde"
+  },
+  "_source": "https://github.com/meanthemes/meanMenu.git",
+  "_target": "*",
+  "_originalSource": "jquery.meanmenu",
+  "_direct": true
+}

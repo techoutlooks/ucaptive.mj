@@ -63,7 +63,6 @@ class StagingSettingsMixin(object):
     # dirs setting
     WWW_DIR = values.Value(environ_required=True)
     ALLOWED_HOSTS = values.Value(environ_required=True)
-    LOGGING_ROOT = values.Value(environ_required=True)
 
     @property
     def STATIC_ROOT(self):
@@ -75,8 +74,8 @@ class StagingSettingsMixin(object):
     @property
     def LOGGING(self):
         logging = super(StagingSettingsMixin, self).LOGGING
-        logging['handlers']['django_log_file']['filename']= join(self.LOGGING_ROOT, 'django.log')
-        logging['handlers']['proj_log_file']['filename'] = join(self.LOGGING_ROOT, 'project.log')
+        logging['handlers']['django_log_file']['filename']= join(self.LOGGING_DIR, 'django.log')
+        logging['handlers']['proj_log_file']['filename'] = join(self.LOGGING_DIR, 'project.log')
         return logging
 
     ############################################
@@ -112,10 +111,10 @@ class AbstractBase(dj_mixins.AppsMixin, dj_mixins.MiddlewareMixin, dj_mixins.Tem
 
     # Define the Project's env vars
     ############################################
-
     LIBS_DIR = values.Value(join(str(BASE_DIR), 'lib'), environ_prefix='PROJECT')
     APPS_DIR = values.Value(join(str(BASE_DIR), 'apps'), environ_prefix='PROJECT')
     DATA_DIR = values.Value(join(dirname(str(BASE_DIR)), 'data'), environ_prefix='PROJECT')
+    LOGGING_DIR = values.PathValue(join(BASE_DIR, 'logs'), checks_exists=True, environ_prefix='PROJECT')
 
     # Setup our python path
     sys.path.append(str(LIBS_DIR))
@@ -223,7 +222,6 @@ class AbstractBase(dj_mixins.AppsMixin, dj_mixins.MiddlewareMixin, dj_mixins.Tem
     ############################################
     # Reset logging first
     # http://www.caktusgroup.com/blog/2015/01/27/Django-Logging-Configuration-logging_config-default-settings-logger/
-    LOGGING_ROOT = join(BASE_DIR, 'logs')
     LOGGING_CONFIG = None
     LOGGING = {
         'version': 1,
@@ -245,13 +243,13 @@ class AbstractBase(dj_mixins.AppsMixin, dj_mixins.MiddlewareMixin, dj_mixins.Tem
             'django_log_file': {
                 'level': 'DEBUG',
                 'class': 'logging.FileHandler',
-                'filename': join(LOGGING_ROOT, 'django.log'),
+                'filename': join(str(LOGGING_DIR), 'django.log'),
                 'formatter': 'verbose'
             },
             'proj_log_file': {
                 'level': 'DEBUG',
                 'class': 'logging.FileHandler',
-                'filename': join(LOGGING_ROOT, 'project.log'),
+                'filename': join(str(LOGGING_DIR), 'project.log'),
                 'formatter': 'verbose'
             },
             'console': {
