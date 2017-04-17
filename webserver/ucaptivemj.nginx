@@ -1,0 +1,21 @@
+server {
+    listen 80;
+    server_name ucaptivemj.cloud.com.gn jeunesse.cloud.com.gn;
+    root /srv/apps/ucaptive.mj/backend/;
+    access_log      /srv/log/apps/ucaptive.mj/nginx/access.log;
+    error_log       /srv/log/apps/ucaptive.mj/nginx/error.log;
+    client_max_body_size 5M;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        alias /var/www/html/apps/ucaptive.mj/public/static/;
+    }
+
+    location / {
+        include         uwsgi_params;
+        uwsgi_pass      unix:///run/uwsgi/apps/ucaptive.mj/socket;
+        uwsgi_param     UWSGI_SCHEME $scheme;
+        uwsgi_param     SERVER_SOFTWARE nginx/$nginx_version;
+    }
+}
+

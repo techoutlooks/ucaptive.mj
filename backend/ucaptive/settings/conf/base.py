@@ -4,9 +4,9 @@
 from os.path import exists, join, dirname, abspath, pardir
 
 from configurations import values
-from lib.settings import AbstractBase
+from lib.settings.conf import AbstractBase
 from lib.settings.mixins import CompressorMixin
-from .mixins import CitiesMixin, DataImporterMixin, CeleryMixin
+from ..mixins import CitiesMixin, DataImporterMixin, CeleryMixin
 from configurations import values
 
 
@@ -15,9 +15,7 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
 
     ############################################
     # Project settings
-    PROJECT_NAME = 'ucaptive.mj'
-    DEBUG = True
-    BASE_DIR = AbstractBase.BASE_DIR
+    DEBUG = AbstractBase.DEBUG
     MANAGERS = AbstractBase.ADMINS + (
         ('Support Group', 'support@techoutlooks.com'),
     )
@@ -94,10 +92,10 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
     @property
     def STATICFILES_DIRS(self):
         """
-
         bower_components: jQuery
         node_modules: nodejs
         """
+#        print "STATICFILES_DIRS  = %s" % super(Base, self).STATICFILES_DIRS
         return super(Base, self).STATICFILES_DIRS + (
             ('bower_components', join(self.BASE_DIR, 'components', 'bower_components')),
             ('node_modules', join(self.BASE_DIR, 'components', 'node_modules')),
@@ -142,8 +140,7 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
 
     # Adding CORS (Cross-Origin Resource Sharing) headers to responses.
     # Cf. https://github.com/ottoyiu/django-cors-headers/
-    CORS_ORIGIN_ALLOW_ALL = DEBUG
-    CORS_ALLOW_CREDENTIALS = False
+    CORS_ALLOW_CREDENTIALS = CORS_ORIGIN_ALLOW_ALL = DEBUG
 
     # todo if debug
     CORS_ORIGIN_WHITELIST = (

@@ -7,3 +7,5 @@ logs/
 htmlcov/
 components/
 data/
+doc/
+.idea/

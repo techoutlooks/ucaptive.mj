@@ -21,7 +21,6 @@ django-configurations==2.0
 django-cors-headers==2.0.1
 django-crispy-forms==1.6.1
 django-debug-toolbar==1.6
-django-environ==0.4.1
 django-extensions==1.7.5
 -e git+https://github.com/divio/django-filer.git@76131197bfee87824599aaac8624ad6ce4e32fbe#egg=django_filer
 django-filter==1.0.1

@@ -2,15 +2,12 @@
 
 from __future__ import unicode_literals
 
-import environ
 from os.path import join
 from decimal import Decimal
 
 from configurations import Configuration, values
 
 _ = lambda x: x
-
-env = environ.Env()
 
 
 class AbstractCMSMixin(object):

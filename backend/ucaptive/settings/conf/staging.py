@@ -3,7 +3,7 @@
 from os.path import join
 
 from .dev import Dev
-from lib.settings import StagingSettingsMixin
+from lib.settings.conf import StagingSettingsMixin
 
 
 class Staging(StagingSettingsMixin, Dev):
