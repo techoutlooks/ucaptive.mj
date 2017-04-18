@@ -3,6 +3,7 @@ __author__ = 'ceduth'
 
 from rest_framework import serializers
 from djra.freeradius.models import RadUser, RadGroup
+from djra.freeradius.settings import get_setting
 
 
 class RadUserSerializer(serializers.ModelSerializer):
@@ -14,8 +15,8 @@ class RadUserSerializer(serializers.ModelSerializer):
     # has to match FormView @radmin.views.UserDetailView, or
     # todo: let serializer display the angular radmin.forms.RadUserForm intially?
     password = serializers.CharField()
-    is_active = serializers.BooleanField()
-    groups = serializers.CharField()
+    is_active = serializers.BooleanField(required=False)
+    groups = serializers.CharField(required=False)
 
     class Meta:
         model = RadUser
@@ -24,7 +25,8 @@ class RadUserSerializer(serializers.ModelSerializer):
         # extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
-        groups = validated_data['groups'].split(',')
+
+        groups = validated_data.get('groups', get_setting('DEFAULT_GROUP')).split(',')
         validated_data.update({'groups': groups})
 
         # we must .create() to update op, value attrs

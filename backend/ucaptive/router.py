@@ -1,5 +1,5 @@
 _RADIUS_APP_NAME = 'freeradius'
-_RADIUS_DB_NAME = 'radius'
+_RADIUS_DB_NAME = 'radius'      # same as FreeRadius v3
 
 class RadiusRouter(object):
     """

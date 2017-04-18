@@ -3,6 +3,15 @@ from rest_framework.permissions import BasePermission
 from rest_framework import permissions
 from rest_framework.exceptions import PermissionDenied
 
+
+class IsNewUser(permissions.BasePermission):
+    """ 
+    Allow non-authenticated user to create via POST  
+    """
+    def has_permission(self, request, view):
+        return request.method == 'POST'
+
+
 class IsAdminOrReadOnly(permissions.BasePermission):
 	"""
 	Custom permission to only allow admin to edit.
@@ -45,7 +54,7 @@ class IsOneSuperAdmin(BasePermission):
 		if request.user.is_authenticated():
 			return request.user.is_admin
 		else:
-			raise PermissionDenied("You must be logged in to view this.")
+			raise PermissionDenied("You must be logged in as an admin to view this.")
 
 
 class IsOneSuperAdminOrIsSelf(BasePermission):

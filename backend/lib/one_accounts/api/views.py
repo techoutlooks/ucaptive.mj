@@ -13,7 +13,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.permissions import AllowAny
 
 from one_auth.authentication import OneTokenAuthentication
-from one_accounts.permissions import IsAdminOrReadOnly, IsOneUserAuthenticated, IsOneSuperAdmin
+from .permissions import IsAdminOrReadOnly, IsOneUserAuthenticated, IsOneSuperAdmin
 from lib.restutils import JSONResponse
 
 User = get_user_model()

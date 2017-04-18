@@ -8,11 +8,10 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 
 from rest_framework import viewsets, mixins, filters, status
-from rest_framework import serializers
-
+from rest_condition import Or
 from lib.restutils import JSONResponse
 from one_auth.authentication import OneTokenAuthentication
-from one_accounts.permissions import IsOneSuperAdmin
+from one_accounts.api.permissions import IsOneSuperAdmin, IsOwnerOrAdmin, IsNewUser
 
 from ..models import RadUser, Radgroupcheck, RadGroup
 from .serializers import RadUserSerializer, RadGroupSerializer
@@ -30,7 +29,7 @@ class RadUserApi(viewsets.ModelViewSet):
     
     """
     serializer_class = RadUserSerializer
-    permission_classes = [IsOneSuperAdmin]
+    permission_classes = [Or(IsNewUser, IsOneSuperAdmin)]
     authentication_classes = (OneTokenAuthentication,)
     lookup_field = lookup_url_kwarg = 'username'
     # filter_backends = (filters.DjangoFilterBackend,)

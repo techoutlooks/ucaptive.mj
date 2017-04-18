@@ -9,7 +9,7 @@ from .authentication import OneTokenAuthentication
 from .serializers import OneLoginSerializer
 
 # todo: one_auth should not rely on external app. make permissions abstract.
-from one_accounts.permissions import IsOneUserAuthenticated
+from one_accounts.api.permissions import IsOneUserAuthenticated
 from lib.restutils import JSONResponse
 
 

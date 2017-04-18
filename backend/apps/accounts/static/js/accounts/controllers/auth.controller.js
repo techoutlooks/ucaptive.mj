@@ -7,13 +7,15 @@
 // import AuthApi from 'accounts';
 
 class AuthCtrl {
-    constructor(User, RadUser, MikrotikUser, AuthConstants, $state, $rootScope, $window, $timeout, djangoForm) {
+    constructor(User, RadUser, MikrotikUser, AuthConstants, RadminConstants,
+                $state, $rootScope, $window, $timeout, djangoForm) {
         'ngInject';
 
         this._User = User;
         this._RadUser = RadUser;
         this._MikrotikUser = MikrotikUser;
         this._AuthConstants = AuthConstants;
+        this._RadminConstants = RadminConstants;
 
         this._$state = $state;
         this._$rootScope = $rootScope;
@@ -33,7 +35,7 @@ class AuthCtrl {
             (res) => {
                 switch(this.authType) {
                     case this._AuthConstants.USER_REGISTER:
-                        this._RadUser.doCreateUpdateDestroy(this._AuthConstants.USER_CREATE, this.credentials).then(
+                        this._RadUser.doCreateUpdateDestroy(this._RadminConstants.USER_CREATE, this.credentials).then(
                             (res) => {
                                 this._MikrotikUser.login(this.authType, this.credentials).then(
                                     (res) => { this._$state.go('app.home') },
@@ -45,7 +47,7 @@ class AuthCtrl {
                         break;
 
                     case this._AuthConstants.USER_LOGIN:
-                        this._MikrotikUser.login(this.authType, this.credentials).then(
+                        this._MikrotikUser.login(this.credentials).then(
                             (res) => { console.log('Mk login success'); this._$state.go('app.home') },
                             (err) => { console.log('Mk login failure'); this.err(err) }
                         )

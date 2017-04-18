@@ -40,6 +40,7 @@ export default class RadUserService {
                 break;
         }
 
+
         return this._$http({
             url: this._AppConstants.apiUrl + '/djra/api/v1/radusers/' + route,
             method: method,

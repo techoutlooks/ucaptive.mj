@@ -8,6 +8,7 @@ from lib.settings.conf import AbstractBase
 from lib.settings.mixins import CompressorMixin
 from ..mixins import CitiesMixin, DataImporterMixin, CeleryMixin
 from configurations import values
+import dj_database_url
 
 
 class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, AbstractBase):
@@ -30,15 +31,15 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
     ROOT_URLCONF = values.Value('ucaptive.urls')
     WSGI_APPLICATION = values.Value('ucaptive.wsgi.application')
 
-    # Hack using .value to cast Configuration object to string
-    DEFAULT_DATABASE_URL = 'sqlite:///db.sqlite3'
-    DATABASES = values.DatabaseURLValue(DEFAULT_DATABASE_URL, alias='default').value
-    DATABASES['radius'] = values.DatabaseURLValue(DEFAULT_DATABASE_URL, alias='radius',
-                                                   environ_name='RADIUS_DATABASE_URL').value.get('radius')
-
     # Database routing
-    # eg. Radius, Ureporters, Staff/Admins databases
+    # eg. Radius, Ureporters, Staff/Admins, Radius databases
     DATABASE_ROUTERS = ['ucaptive.router.RadiusRouter']
+    DEFAULT_DATABASE_URL = 'sqlite:///db.sqlite3'
+    def DATABASES(self):
+        return {
+            "default": dj_database_url.config(env='DATABASE_URL', default=self.DEFAULT_DATABASE_URL),
+            "radius": dj_database_url.config(env='RADIUS_DATABASE_URL', default=self.DEFAULT_DATABASE_URL),
+        }
 
     # MiddlewareMixin
     # Cf. backend/lib/settings/mixins/base.py
@@ -65,7 +66,7 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
         'sekizai',
         'crispy_forms',
 
-        # todo: sanitize, use either of tastypie (freeradius) or  djangorestframework
+        # todo: delete tastypie when DRF3 code for freeradius.api.* is clean.
         'tastypie',
 
         'corsheaders',
@@ -130,7 +131,7 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
         ),
         'EXCEPTION_HANDLER': 'lib.restutils.custom_exception_handler',
         'DEFAULT_PERMISSION_CLASSES': (
-            'one_accounts.permissions.IsOneUserAuthenticated',
+            'one_accounts.api.permissions.IsOneUserAuthenticated',
         ),
         'DEFAULT_AUTHENTICATION_CLASSES': (
             'rest_framework.authentication.BasicAuthentication',
@@ -169,5 +170,10 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
 
     ############################################
     # https://github.com/stefanfoulis/django-phonenumber-field
+
     PHONENUMBER_DB_FORMAT = 'NATIONAL'
     PHONENUMBER_DEFAULT_REGION = 'GN'
+
+    ############################################
+    # Settings for djra.freeradius
+    DJRA_DEFAULT_GROUP = 'ureporters'
