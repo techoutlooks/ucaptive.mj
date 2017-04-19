@@ -99,22 +99,23 @@ todo: bowerize to build around jquery 1.12.0
 {#<script type="text/javascript" src="{% static 'vendor/wow.min.js' %}"></script>#}
 <!-- Google Map APi
 ============================================ -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuU_0_uLMnFM-2oWod_fzC0atPZj7dHlU"></script>
 <script>
     new WOW().init();
 </script>
 <!-- Main JS
 ============================================ -->
-<script type="text/javascript" src="{% static 'js/map1.js' %}"></script>
+<!--<script type="text/javascript" src="{% static 'js/map1.js' %}"></script> -->
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/site.js' %}"></script>
 <!-- Angular (vendors) JS
 todo: convert to from...import'';
 ============================================ -->
+{% addtoblock js %}<script src="{% static 'node_modules/lodash/lodash.min.js' %}"></script>{% endaddtoblock js %}
+{% addtoblock js %}<script src="{% static 'node_modules/underscore/underscore-min.js' %}"></script>{% endaddtoblock js %}
+
 {% addtoblock js %}<script src="{% static 'node_modules/angular/angular.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/angular-sanitize/angular-sanitize.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/angular-ui-router/release/angular-ui-router.min.js' %}"></script>{% endaddtoblock js %}
-{% addtoblock js %}<script src="{% static 'node_modules/underscore/underscore-min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/restangular/dist/restangular.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/oclazyload/dist/ocLazyLoad.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/angular-bootstrap/ui-bootstrap-tpls.min.js' %}"></script>{% endaddtoblock js %}
@@ -122,6 +123,11 @@ todo: convert to from...import'';
 {% addtoblock js %}<script src="{% static 'node_modules/angular-ui-select/select.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'djng/js/django-angular.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/angular-animate/angular-animate.min.js' %}"></script>{% endaddtoblock js %}
+
+{% addtoblock js %}<script src="{% static 'node_modules/angular-simple-logger/dist/angular-simple-logger.min.js' %}"></script>{% endaddtoblock js %}
+{% addtoblock js %}<script src="{% static 'node_modules/angular-google-maps/dist/angular-google-maps.min.js' %}"></script>{% endaddtoblock js %}
+
+
 <!-- Angular (app) JS
 ============================================
 {%  if debug %}

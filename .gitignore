@@ -5,8 +5,7 @@ media/
 staticfiles/
 logs/
 htmlcov/
-/components/
+components/
 data/
 doc/
 .idea/
-node_modules/

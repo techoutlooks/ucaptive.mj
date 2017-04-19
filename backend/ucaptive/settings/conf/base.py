@@ -101,20 +101,9 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
             ('bower_components', join(self.BASE_DIR, 'components', 'bower_components')),
             ('node_modules', join(self.BASE_DIR, 'components', 'node_modules')),
             ('vendor', join(self.BASE_DIR, 'components', 'vendor')),
+
+            ('gmaps', join(dirname(self.BASE_DIR), 'data', 'gmaps'))
         )
-
-    ############################################
-    # Settings for storing files and images
-
-    THUMBNAIL_PROCESSORS = (
-        'easy_thumbnails.processors.colorspace',
-        'easy_thumbnails.processors.autocrop',
-        'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-        'easy_thumbnails.processors.filters'
-    )
-
-    # For easy_thumbnails to support retina displays (recent MacBooks, iOS) add to settings.py
-    THUMBNAIL_HIGH_RESOLUTION = True
 
     #IP_DB_FILE = '/some/path/to/ipdb.dat'
 
@@ -175,5 +164,6 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
     PHONENUMBER_DEFAULT_REGION = 'GN'
 
     ############################################
-    # Settings for djra.freeradius
+    # Settings
+    # Cf djra.freeradius
     DJRA_DEFAULT_GROUP = 'ureporters'

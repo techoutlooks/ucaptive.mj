@@ -132,9 +132,11 @@ class Profile(ModelFactoryMixin, models.Model):
     User profile of a U-Reporter
 
     """
+    # tod: fix filer migration issue with photo field
+
     # personal info.
     reporter = models.OneToOneField(Reporter, on_delete=models.CASCADE, related_name='profile')
-    photo = FilerImageField(verbose_name=_('Photo'), null=True, blank=True, related_name='+')
+    # photo = FilerImageField(verbose_name=_('Photo'), null=True, blank=True, related_name='+')
     age = models.PositiveIntegerField(null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     time_spend = models.DurationField(default=timedelta(), null=True, blank=True,

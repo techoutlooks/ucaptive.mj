@@ -1,5 +1,5 @@
 
-class MikrotikUserService {
+class MikrotikHotspotUserService {
     constructor(User, AppConstants, $http, $httpParamSerializerJQLike) {
     'ngInject;'
 
@@ -17,12 +17,16 @@ class MikrotikUserService {
             data: this._$httpParamSerializerJQLike(credentials)
         }).then(
             (res) => {
-                console.log('Mikrotik login success '+JSON.stringify(res.data));
+                console.log('MikrotikHotspotUserService:: login success '+JSON.stringify(res.data));
                 return res.data;
+            },
+            (data, status, headers, config) => {
+                console.log('MikrotikHotspotUserService:: Hotstpot login success '+JSON.stringify(status));
+                return "Login to Mikrotik hotspot failed with status " + status;
             }
         )
     }
 }
 
-export {MikrotikUserService}
+export {MikrotikHotspotUserService}
 

@@ -191,6 +191,8 @@ class AbstractBase(dj_mixins.AppsMixin, dj_mixins.MiddlewareMixin, dj_mixins.Tem
         'filer.thumbnail_processors.scale_and_crop_with_subject_location',
         'easy_thumbnails.processors.filters'
     )
+    # For easy_thumbnails to support retina displays (recent MacBooks, iOS)
+    THUMBNAIL_HIGH_RESOLUTION = True
 
     # Internationalization
     # https://docs.djangoproject.com/en/1.8/topics/i18n/

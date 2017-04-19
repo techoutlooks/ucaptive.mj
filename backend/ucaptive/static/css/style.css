@@ -957,7 +957,7 @@ img {
 .home-map-container {
   background: #ffffff none repeat scroll 0 0;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  margin-top: -78px;
+  /* margin-top: -78px; */
 }
 .home-map-container .map {
   width: 62%;
@@ -966,6 +966,9 @@ img {
   width: 100%;
   height: 700px;
 }
+
+.angular-google-map-container { height: 700px; }
+
 .home-map-content {
   padding: 30px 25px;
   width: 38%;
@@ -1840,8 +1843,9 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 	4. Category Product Page
 ------------------------*/
 .pages {
-  background: #FAFAFA;
-  padding-top: 170px;
+  /* background: #FAFAFA; 
+  padding-top: 170px; */
+  padding-top: 100px;
 }
 .title-breadcrumb {
   margin: 65px 0 100px;

@@ -26,7 +26,7 @@ def render_robots(request):
 
 
 i18n_urls = [
-    url(r'^', include('layout.urls', namespace='cms')),
+    url(r'^', include('layout.urls', namespace='layout')),
     url(r'^radmin/', include('djra.radmin.urls')),
     url(r'^reports/', include('djra.reports.urls')),
     url(r'^accounts/', include('accounts.urls')),

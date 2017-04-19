@@ -2,20 +2,20 @@
 
 <!-- Header Area -->
 <div id="header-area" class="clearfix text-center">
-	<!-- Header Logo -->
-	<div class="header-logo float-left text-left">
-		<a ui-sref="app.about"><img src="{% static 'img/logo.png' %}" alt="logo" height="72px" /></a>
-	</div>
+
 	<div class="menu-search">
 		<!-- Top Menu -->
 		<div class="top-menu float-left hidden-sm hidden-xs">
+
+        	<!-- Header Logo -->
+	        <div class="navbar-brand">
+		        <a ui-sref="app.home"><img src="{% static 'img/logo.png' %}" alt="logo" height="72px" /></a>
+                <a ui-sref="app.home" ng-bind="::$ctrl.appName | lowercase"></a>
+	        </div>
             <nav class="navbar navbar-light">
               <div class="container">
 
-                <a class="navbar-brand"
-                  ui-sref="app.about"
-                      ng-bind="::$ctrl.appName | lowercase">
-                </a>
+
 
                 <!-- Show this for logged out users -->
                 <ul show-authed="false"
@@ -24,7 +24,7 @@
                   <li class="nav-item">
                     <a class="nav-link"
                       ui-sref-active="active"
-                      ui-sref="app.about">
+                      ui-sref="app.home">
                       Home
                     </a>
                   </li>
@@ -54,7 +54,7 @@
                   <li class="nav-item">
                     <a class="nav-link"
                       ui-sref-active="active"
-                      ui-sref="app.about">
+                      ui-sref="app.home">
                       Home
                     </a>
                   </li>

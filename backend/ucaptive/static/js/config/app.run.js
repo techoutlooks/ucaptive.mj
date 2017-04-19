@@ -2,7 +2,7 @@
  * @name run
  * @desc Update xsrf $http headers to align with Django's defaults
  */
- function AppRun(JWT, AppConstants, $rootScope, $state, $log) {
+ function AppRun(JWT, AppConstants, $rootScope, $state, $window) {
   'ngInject';
 
     // $http.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -17,13 +17,26 @@
 
     // Helper method for setting the page's title
     $rootScope.setPageTitle = (title) => {
-    $rootScope.pageTitle = '';
-    if (title) {
-        $rootScope.pageTitle += title;
-        $rootScope.pageTitle += ' \u2014 ';
-    }
-    $rootScope.pageTitle += AppConstants.appName;
+        $rootScope.pageTitle = '';
+        if (title) {
+            $rootScope.pageTitle += title;
+            $rootScope.pageTitle += ' \u2014 ';
+        }
+        $rootScope.pageTitle += AppConstants.appName;
     };
+
+
+  /* --
+    Have ui-router to redirect external page.
+    external:True must be found on the state.
+   ------------------------------------------------------------*/
+  $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
+      if (toState.external) {
+        event.preventDefault();
+        $window.open(toState.url, '_self');
+      }
+    });
+
 
     /*--
      On every state change verify that exists logged in user,

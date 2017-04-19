@@ -1,13 +1,19 @@
 const AppConstants = {
-    apiUrl: 'http://ucaptivemj.cloud.com.gn:8000',
+
+    // This App's APIs
+    apiUrl: 'http://ucaptivemj.cloud.com.gn',
     mikrotikUrl: 'http://mjrouter.cloud.com.gn',
-
-    twitterApiUrl: null,
-    facebookApiUrl: null,
-
     profileUrl: 'accounts/api/v1/profile/',
     mikrotikRedirectUrl: '/mk-success',
 
+    wifiIconBaseUrl: '/static/img/icon',
+
+    // APIs from external providers
+    ureportApiUrl: 'https://guinea.ureport.in/',
+    twitterApiUrl: null,
+    facebookApiUrl: null,
+
+    // Constants. eg.: dict keys, etc...
     jwtKey: 'jwtToken',
     appName: 'uCaptive',
     identity: 'Identity'                        // currently logged in user

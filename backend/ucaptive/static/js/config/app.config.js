@@ -38,7 +38,7 @@ function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterP
             }
         }
     });
-    $urlRouterProvider.otherwise('/about/');
+    $urlRouterProvider.otherwise('/home/');
 
 }
 

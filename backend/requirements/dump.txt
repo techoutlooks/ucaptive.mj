@@ -53,6 +53,7 @@ phonenumberslite==8.0.0
 Pillow==3.4.2
 -e git+https://github.com/timmy21/pipestat.git@96c6ccc8fed21ac319059ca64bd238d25c994bac#egg=pipestat
 progressbar2==3.12.0
+psycopg2==2.7.1
 pyasn1==0.1.9
 pycparser==2.17
 pyOpenSSL==16.2.0

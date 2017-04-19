@@ -17,7 +17,7 @@ let ListErrors = {
     },
     scope: true,
     controller: ListErrorsCtrl,
-  template: `   
+    template: `   
     <ul class="error-messages" ng-show="$ctrl.errors">
       <div ng-repeat="(field, errors) in $ctrl.errors">
         <li ng-repeat="error in $ctrl.formatErrors(errors)"> 
@@ -25,7 +25,7 @@ let ListErrors = {
         </li>
       </div>
     </ul>
-  `
+    `
 }
 
 export default ListErrors;
