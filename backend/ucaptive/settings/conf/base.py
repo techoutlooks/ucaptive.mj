@@ -1,23 +1,25 @@
 # -*- coding: utf-8 -*-
 # settings/config/base.py
 
-from os.path import exists, join, dirname, abspath, pardir
-
-from configurations import values
-from lib.settings.conf import AbstractBase
-from lib.settings.mixins import CompressorMixin
-from ..mixins import CitiesMixin, DataImporterMixin, CeleryMixin
 from configurations import values
 import dj_database_url
 
+from os.path import exists, join, dirname, abspath, pardir
+from lib.settings.conf import AbstractBaseSettings
+from lib.settings.mixins import CompressorSettingsMixin
+from lib.djros.settings import DjROSSettingsMixin
+from apps.orgs.settings import OrgTaskSettingsMixin
+from apps.cities.settings import CitiesSettingsMixin
+from ..mixins import DataImportersettingsMixin
 
-class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, AbstractBase):
+
+class BaseSettings(DjROSSettingsMixin, CompressorSettingsMixin, OrgTaskSettingsMixin, DataImportersettingsMixin, CitiesSettingsMixin, AbstractBaseSettings):
     """ Basic Django configuration """
 
     ############################################
     # Project settings
-    DEBUG = AbstractBase.DEBUG
-    MANAGERS = AbstractBase.ADMINS + (
+    DEBUG = AbstractBaseSettings.DEBUG
+    MANAGERS = AbstractBaseSettings.ADMINS + (
         ('Support Group', 'support@techoutlooks.com'),
     )
 
@@ -35,6 +37,7 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
     # eg. Radius, Ureporters, Staff/Admins, Radius databases
     DATABASE_ROUTERS = ['ucaptive.router.RadiusRouter']
     DEFAULT_DATABASE_URL = 'sqlite:///db.sqlite3'
+
     def DATABASES(self):
         return {
             "default": dj_database_url.config(env='DATABASE_URL', default=self.DEFAULT_DATABASE_URL),
@@ -57,7 +60,7 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
         'paging',
         'test_utils',
         'phonenumber_field',
-        'smart_selects',                    # provides ChainedForeignKey model used in cities app
+        # 'smart_selects',                    # provides ChainedForeignKey model used in cities app
 
         # django-filer dependencies below
         'easy_thumbnails',
@@ -67,41 +70,44 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
         'crispy_forms',
 
         # todo: delete tastypie when DRF3 code for freeradius.api.* is clean.
-        'tastypie',
+        # 'tastypie',
 
         'corsheaders',
-        'rest_framework',
+        'rest_framework',                   # DRF3
+        'rest_framework_api_key',
         'djng',                             # django-angular
 
+        # TODO: make package
+        # my libs
         'one_auth',
         'one_accounts',                     #
+        'contacts',                         # django-contacts
         'data_importer',                    # xlsx, csv to models
-    )
 
-    PROJECT_APPS = (
-        'ucaptive',
         'djra.freeradius.apps.FreeRadiusConfig',
         'djra.radmin',
         'djra.reports',
-        'accounts',
-        'cities',
-        'layout',
+        'djros',
+    )
+
+    PROJECT_APPS = (
+        'apps.accounts',
+        'apps.cities',
+        'apps.layout',
+        'apps.orgs',
+        'ucaptive',
     )
 
     STATIC_URL = '/static/'
 
     @property
     def STATICFILES_DIRS(self):
-        """
-        bower_components: jQuery
-        node_modules: nodejs
-        """
-#        print "STATICFILES_DIRS  = %s" % super(Base, self).STATICFILES_DIRS
-        return super(Base, self).STATICFILES_DIRS + (
-            ('bower_components', join(self.BASE_DIR, 'components', 'bower_components')),
-            ('node_modules', join(self.BASE_DIR, 'components', 'node_modules')),
-            ('vendor', join(self.BASE_DIR, 'components', 'vendor')),
-
+        # bower_components: jQuery, node_modules: nodejs
+        COMPONENTS_DIR = join(dirname(self.BASE_DIR), 'components')
+        return super(BaseSettings, self).STATICFILES_DIRS + (
+            ('bower_components', join(COMPONENTS_DIR, 'bower_components')),
+            ('node_modules', join(COMPONENTS_DIR, 'node_modules')),
+            ('vendor', join(COMPONENTS_DIR, 'vendor')),
             ('gmaps', join(dirname(self.BASE_DIR), 'data', 'gmaps'))
         )
 
@@ -165,5 +171,10 @@ class Base(CompressorMixin, CeleryMixin, DataImporterMixin, CitiesMixin, Abstrac
 
     ############################################
     # Settings
-    # Cf djra.freeradius
+    # Cf for djra.freeradius
     DJRA_DEFAULT_GROUP = 'ureporters'
+
+
+    ############################################
+    # rest_framework_api_key
+    DRF3_APIKEY_MODEL = 'orgs.OrgApiKeyToken'

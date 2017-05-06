@@ -4,6 +4,8 @@ __author__ = 'ceduth'
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
+from apps.accounts.api.serializers import ProfileSerializer
+from apps.accounts.models import Profile
 
 User = get_user_model()
 
@@ -16,29 +18,64 @@ class OneUserSerializer(serializers.ModelSerializer):
 
     # in case customer user model might not define a 'username' field,
     # let's strive to keep the api DRY, ie. bound to 'username' anyhow.
+    # eg. serialized REST response:
+    #     {
+    #         'profile': {
+    #             'age', 33,
+    #             'gender', u'F',
+    #             'country', u'Guinea'
+    #         },
+    #         'first_name': u'Therese',
+    #         'last_name': u'V',
+    #         'mobile_number': u'622422576',
+    #         'password': u'luong1234',
+    #         'email': u'tvany@techoutlooks.com'
+    #     }
     username = serializers.CharField(source='mobile_number', validators=[UniqueValidator(queryset=User.objects.all())])
+    profile = ProfileSerializer(required=True)
 
     class Meta:
         model = User
+        # fields = ('id', 'username', 'password', 'email', 'first_name', 'last_name',
+        #           'is_active', 'date_joined', 'last_login', 'is_admin')
         fields = ('id', 'username', 'password', 'email', 'first_name', 'last_name',
-                  'is_active', 'date_joined', 'last_login', 'is_admin')
+                  'is_active', 'date_joined', 'last_login', 'is_admin', 'profile')
 
         read_only_fields = ('date_joined', 'last_login', 'id')
         extra_kwargs = {'password': {'write_only': True}}
 
+    # def create(self, validated_data):
+    #     user = User(
+    #         **validated_data
+    #     )
+    #     user.set_password(validated_data['password'])
+    #     user.save()
+    #     return user
+
     def create(self, validated_data):
-        user = User(
-            **validated_data
-        )
+        """
+        Create a new user with associated profile 
+        """
+        user_data = validated_data
+        profile_data = user_data.pop('profile')
+
+        # create user with password
+        # triggers signal that also create an empty profile for this user
+        user = User(**user_data)
         user.set_password(validated_data['password'])
         user.save()
+
+        # update profile created by signal
+        # with kwargs
+        profile = Profile(**profile_data)
+        profile.reporter = user
+        profile.save()
+
         return user
 
     def validate(self, attrs):
 
         return attrs
-
-
 
 
 class OneUserDetailsSerializer(serializers.ModelSerializer):
@@ -127,7 +164,7 @@ class RecoverPasswordUserSerializer(serializers.Serializer):
     def send_mail(self, subject_template_name, email_template_name,
                   context, from_email, to_email, html_email_template_name=None):
         """
-        Sends a django.core.mail.EmailMultiAlternatives to `to_email`.
+        Sends a django.orgs.mail.EmailMultiAlternatives to `to_email`.
         """
         subject = loader.render_to_string(subject_template_name, context)
         # Email subject *must not* contain newlines

@@ -11,23 +11,23 @@ Requisites:
     (scss) npm install node-sass postcss-cli autoprefixer
 
 """
-from os.path import join
+from os.path import join, dirname
 
 
-class CompressorMixin(object):
+class CompressorSettingsMixin(object):
 
     ############################################
     # Requisites
 
     @property
     def INSTALLED_APPS(self):
-         apps = super(CompressorMixin, self).INSTALLED_APPS
+         apps = super(CompressorSettingsMixin, self).INSTALLED_APPS
          apps += ('compressor', 'compressor_toolkit',)
          return apps
 
     @property
     def STATICFILES_FINDERS(self):
-        finders = super(CompressorMixin, self).STATICFILES_FINDERS
+        finders = super(CompressorSettingsMixin, self).STATICFILES_FINDERS
         finders += ('compressor.finders.CompressorFinder',)
         return finders
 
@@ -47,11 +47,11 @@ class CompressorMixin(object):
 
     @property
     def COMPRESS_BROWSERIFY_BIN(self):
-        return join(self.BASE_DIR, 'components', 'node_modules/.bin/browserify')
+        return join(dirname(self.BASE_DIR), 'components', 'node_modules/.bin/browserify')
 
     @property
     def COMPRESS_NODE_MODULES(self):
-        return join(self.BASE_DIR, 'components/node_modules')
+        return join(dirname(self.BASE_DIR), 'components/node_modules')
 
     COMPRESS_PRECOMPILERS = (
         ('text/es6', 'compressor_toolkit.precompilers.ES6Compiler'),

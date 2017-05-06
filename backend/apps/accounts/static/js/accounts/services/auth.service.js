@@ -77,7 +77,7 @@ class Auth extends BaseApi {
 
 
     register(credentials) {
-        return this.api.all(this._AuthConstants.USER_API + '/').post(credentials).then(
+        return this.api.all(this._AuthConstants.authApiUrl ).post(credentials).then(
             (res) => {
                 this.current = res;
                 return res;
@@ -85,7 +85,7 @@ class Auth extends BaseApi {
     }
 
     login(credentials) {
-        return this.api.all(this._AuthConstants.USER_API + '/login/').post(credentials).then(
+        return this.api.all(this._AuthConstants.authApiUrl + 'login/').post(credentials).then(
             (res) => {
                 this._JWT.save(res.token);
                 this.getIdentity().then(
@@ -135,22 +135,15 @@ class Auth extends BaseApi {
             deferred.resolve(true);
 
         } else {
-            // this._$http({
-            //     // url: this._AppConstants.loginApiUrl + '/user',
-            //     method: 'GET',
-            //     headers: {
-            //         Authorization: 'one-token ' + this._JWT.get()
-            //     }
-            // }).then(
-                this.getIdentity().then((res) => {
-                    if(res) {
-                        this.current = res;
-                        deferred.resolve(true);
-                    } else {
-                        this._JWT.destroy();
-                        deferred.resolve(false);
-                    }
-                });
+            this.getIdentity().then((res) => {
+                if(res) {
+                    this.current = res;
+                    deferred.resolve(true);
+                } else {
+                    this._JWT.destroy();
+                    deferred.resolve(false);
+                }
+            });
         }
         return deferred.promise;
     }
@@ -179,7 +172,7 @@ class Auth extends BaseApi {
      * @memberOf app.accounts.services.Auth
      */
         let deferred = this._$q.defer();
-        this.api.one('accounts/api/v1/profile/').get().then(
+        this.api.one(this._AuthConstants.authApiUrl + 'profile/').get().then(
             (res) => {
                 deferred.resolve(res);
             },

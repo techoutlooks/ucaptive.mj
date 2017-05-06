@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 from os.path import join, dirname
-# from django.core.urlresolvers import reverse_lazy
+# from django.org.urlresolvers import reverse_lazy
 
 
 
@@ -69,6 +69,14 @@ class AppsMixin(object):
             out_apps += self.DEV_APPS
         return out_apps + self.PROJECT_APPS
 
+    def add_apps(self, new_apps, existing_apps):
+        """ 
+        Append apps in new_apps to INSTALLED_APPS 
+        """
+        # TODO: option to insert in ADMIN_APPS, DEFAULT_APPS, etc.
+
+        return tuple(existing_apps) + tuple(filter(lambda app: app not in existing_apps, new_apps))
+
 
 class AuthURLMixin(object):
 
@@ -127,7 +135,7 @@ class TemplatesMixin(object):
         return templates
 
 
-class EmailMixin(object):
+class SendMailMixin(object):
     """
     Django settings for sending email.
 
@@ -140,7 +148,7 @@ class EmailMixin(object):
     EMAIL_HOST_USER = 'noreply@techoutlooks.com'
     EMAIL_HOST_PASSWORD = 'techu0910!'
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_BACKEND = 'django.org.mail.backends.smtp.EmailBackend'
 
     @property
     def EMAIL_SUBJECT_PREFIX(self):

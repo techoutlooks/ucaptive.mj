@@ -31,5 +31,5 @@ def custom_exception_handler(exc, context):
         response.data['errors'] = errors
         response.data['status'] = 'error'
 
-        response.data['exception'] = exc.detail
+        response.data['exception'] = getattr(exc, 'detail', 'Unkown Error')
     return response

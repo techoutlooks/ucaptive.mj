@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from .user import NgLoginForm, NgRegistrationForm
+from .ureporters import NgLoginForm, NgUserForm, NgProfileForm

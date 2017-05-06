@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from data_importer.views import DataImporterForm
-from accounts.models import UReportDataImporter
+from apps.accounts.models import UReportDataImporter
 
 from django.conf import settings
 

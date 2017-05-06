@@ -23,9 +23,10 @@ from smart_selects.db_fields import ChainedForeignKey
 from one_accounts.models import OneUserManager, AbstractOneUser
 from lib.mixins.models import ModelFactoryMixin
 
-from cities.models import Country, Region, City
+from apps.cities.models import Country, Region, City
 from .user_constants import *
 from .users_limits import Plan
+from ..constants import GENDER_CHOICES
 
 
 class UserManager(OneUserManager):
@@ -64,10 +65,11 @@ class Reporter(ModelFactoryMixin, AbstractOneUser):
     """
     A U-Reporter's system account.
 
-    login = E.164 phone format / password =
+    login = E.164 phone format, password =
 
     """
     # is_staff = models.BooleanField(_('staff'), default=False)
+    # org = models.ForeignKey('orgs.Org')
     mobile_number = PhoneNumberField(unique=True)
     USERNAME_FIELD = 'mobile_number'
     REQUIRED_FIELDS = ['first_name', 'last_name']
@@ -120,12 +122,6 @@ class Reporter(ModelFactoryMixin, AbstractOneUser):
             return 0
 
 
-GENDER_CHOICES = (
-    ('M', _('Man')),
-    ('F', _('Woman'))
-)
-
-
 @python_2_unicode_compatible
 class Profile(ModelFactoryMixin, models.Model):
     """
@@ -138,16 +134,14 @@ class Profile(ModelFactoryMixin, models.Model):
     reporter = models.OneToOneField(Reporter, on_delete=models.CASCADE, related_name='profile')
     # photo = FilerImageField(verbose_name=_('Photo'), null=True, blank=True, related_name='+')
     age = models.PositiveIntegerField(null=True, blank=True)
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, help_text=_("Sex"))
     time_spend = models.DurationField(default=timedelta(), null=True, blank=True,
                                       help_text=_('Total connection time.'))
     # geo properties from the 'cities' app.
     # already exist in related models, don't create new.
-    country = models.ForeignKey(Country)
-    region = ChainedForeignKey(Region, chained_field='country', chained_model_field='country', show_all=False,
-                               help_text="What region are you from?")
-    city = ChainedForeignKey(City, chained_field='region', chained_model_field='region', show_all=False,
-                             help_text="Your birth place.")
+    country = models.ForeignKey(Country, null=True, default=1, help_text=_("What country are you from?"))
+    region = models.ForeignKey(Region, null=True, help_text=_("What region are you from?"))
+    city = models.ForeignKey(City, null=True, help_text=_("Your birth place."))
     # accounting fields
     plan = models.ForeignKey(Plan, null=True, blank=True)
 

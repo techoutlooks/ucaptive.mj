@@ -29,7 +29,8 @@ class AllUserList(generics.ListCreateAPIView):
     serializer_class = OneUserSerializer
     authentication_classes = (OneTokenAuthentication,)
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_fields = ('username', 'is_active', 'is_admin')
+    # FIXME: TypeError: 'Meta.fields' contains fields that are not defined on this FilterSet: username
+    # filter_fields = ('username', 'is_active', 'is_admin')
 
     def get_permissions(self):
         # allow non-authenticated user to create via POST

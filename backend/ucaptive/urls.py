@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, unicode_literals
+__author__ = 'ceduth'
+
 
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
@@ -8,11 +10,12 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 from django.http import HttpResponse
 
-from tastypie.api import Api
-
-# from djra.freeradius.api import RadUserResource, RadGroupResource
-
 admin.autodiscover()
+
+
+# FIXME: Refactor/Delete Tastypie after testing replacement by DRF3.
+# from tastypie.api import Api
+# from djra.freeradius.api import RadUserResource, RadGroupResource
 
 # curl http://localhost:8000/api/djra/v1/
 # v1_api = Api(api_name='v1')
@@ -26,20 +29,33 @@ def render_robots(request):
 
 
 i18n_urls = [
-    url(r'^', include('layout.urls', namespace='layout')),
+    url(r'^', include('apps.layout.urls', namespace='layout')),
+    url(r'^accounts/', include('apps.accounts.urls.views')),
     url(r'^radmin/', include('djra.radmin.urls')),
     url(r'^reports/', include('djra.reports.urls')),
-    url(r'^accounts/', include('accounts.urls')),
+
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^chaining/', include('smart_selects.urls')),          # chained models (smart_select) in user profile
+    url(r'^cities/', include('apps.cities.urls', namespace='cities')),
+    # url(r'^chaining/', include('smart_selects.urls')),          # chained models (smart_select) in user profile
+
+]
+
+api_urls = [
+    url(r'^djra/api/v1/', include('djra.freeradius.urls')),
+    url(r'^djros/api/v1/', include('djros.urls')),
+    url(r'^accounts/api/v1/users/', include('one_accounts.urls')),
+    url(r'^accounts/api/v1/', include('apps.accounts.urls.api')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # url(r'^autocomplete/', include('autocomplete_light.urls')),
+    # url(r'^cities/api/v1/', include('cities_light.contrib.restframework3')),
+
+
+
 ]
 
 urlpatterns = [
     url(r'^robots\.txt$', render_robots),
-    url(r'^djra/', include('djra.freeradius.urls')),
-
-    url(r'^accounts/', include('accounts.urls')),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^', include(api_urls)),
 ]
 
 

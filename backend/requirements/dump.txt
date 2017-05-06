@@ -1,11 +1,15 @@
-amqp==2.1.4
+Django==1.8.2
+django-celery==3.1.17
+  celery==3.1.23
+    billiard==3.3.0.23
+    kombu==3.0.34
+      amqp==1.4.9
+      anyjson==0.3.3
+django-celery-transactions==0.3.5
 appdirs==1.4.3
 Babel==2.3.4
 BeautifulSoup==3.2.1
-billiard==3.5.0.2
-celery==4.0.2
 cffi==1.9.1
-coverage==4.3.1
 cryptography==1.7.2
 data-importer==3.0.2
 dj-database-url==0.4.1
@@ -18,6 +22,8 @@ django-classy-tags==0.8.0
 django-compressor==2.1.1
 django-compressor-toolkit==0.6.0
 -e git+https://github.com/jazzband/django-configurations.git@a606003c777160fe6141acb9386d0e217c62dd3c#egg=django_configurations
+-e git+https://github.com/techoutlooks/django-contacts.git@524f65d16fdf87d0e6dd781f48c4329d0f6d8c6f#egg=django_contacts
+django-contrib-comments==1.8.0
 django-cors-headers==2.0.1
 django-crispy-forms==1.6.1
 django-debug-toolbar==1.6
@@ -25,6 +31,7 @@ django-environ==0.4.2
 django-extensions==1.7.8
 -e git+https://github.com/divio/django-filer.git@76131197bfee87824599aaac8624ad6ce4e32fbe#egg=django_filer
 django-filter==1.0.1
+django-macaddress==1.4.1
 django-mptt==0.8.7
 django-paging==0.2.5
 django-phonenumber-field==1.1.0
@@ -34,10 +41,10 @@ django-registration==2.2
 django-sekizai==0.10.0
 django-smart-selects==1.3.4
 django-split-settings==0.2.4
-django-tastypie==0.13.3
 django-templatetag-sugar==1.0
 django-test-utils==0.3
 djangorestframework==3.5.3
+drfapikey==0.0.3
 easy-thumbnails==2.3
 enum34==1.1.6
 et-xmlfile==1.0.1
@@ -45,8 +52,8 @@ gunicorn==19.3.0
 idna==2.2
 ipaddress==1.0.18
 jdcal==1.3
-kombu==4.0.2
 mimeparse==0.1.3
+netaddr==0.7.19
 openpyxl==2.4.0
 packaging==16.8
 phonenumberslite==8.0.0
@@ -66,6 +73,7 @@ rcssmin==1.0.6
 redis==2.10.5
 rest-condition==1.0.3
 rjsmin==1.0.12
+RouterOS-api==0.14
 six==1.10.0
 sqlparse==0.2.2
 Unidecode==0.4.19

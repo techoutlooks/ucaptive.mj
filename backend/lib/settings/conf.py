@@ -32,7 +32,7 @@ class DevSettingsMixin(object):
     ############################################
     # settings for sending mail
 
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = 'django.org.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'noreply@techoutlooks.com'
     #LOGGING['loggers']['django.security.DisallowedHost']['handlers'] =  ['null']
 
@@ -94,8 +94,8 @@ class ProdSettingsMixin(object):
     HTTPS_ONLY = True
 
 
-class AbstractBase(dj_mixins.AppsMixin, dj_mixins.MiddlewareMixin, dj_mixins.TemplatesMixin, dj_mixins.AuthURLMixin,
-                   Configuration):
+class AbstractBaseSettings(dj_mixins.AppsMixin, dj_mixins.MiddlewareMixin, dj_mixins.TemplatesMixin, dj_mixins.AuthURLMixin,
+                           Configuration):
     """ 
     Basic Django configuration. 
     Expects env vars in 'settings/env/*.env' of current project.
@@ -104,21 +104,18 @@ class AbstractBase(dj_mixins.AppsMixin, dj_mixins.MiddlewareMixin, dj_mixins.Tem
     # Pre-setup
     ############################################
 
-    BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
+    BASE_DIR = dirname(dirname(dirname(abspath(__file__)))) # Path relative to main app.
     PROJECT_NAME = values.Value(str(BASE_DIR).rsplit("/", 1)[1], environ_prefix=None)
     SETTINGS_DIR = join(BASE_DIR, *environ['DJANGO_SETTINGS_MODULE'].split('.'))
     DOTENV = join(SETTINGS_DIR, 'env/%s.env' % socket.gethostname().split('.', 1)[0])
 
-    # Define the Project's env vars
+    # Define the Project's env
     ############################################
     LIBS_DIR = values.Value(join(str(BASE_DIR), 'lib'), environ_prefix='PROJECT')
     APPS_DIR = values.Value(join(str(BASE_DIR), 'apps'), environ_prefix='PROJECT')
     DATA_DIR = values.Value(join(dirname(str(BASE_DIR)), 'data'), environ_prefix='PROJECT')
-    LOGGING_DIR = values.PathValue(join(BASE_DIR, 'logs'), checks_exists=True, environ_prefix='PROJECT')
-
-    # Setup our python path
+    LOGGING_DIR = values.PathValue(join(dirname(str(BASE_DIR)), 'logs'), checks_exists=True, environ_prefix='PROJECT')
     sys.path.append(str(LIBS_DIR))
-    sys.path.append(str(APPS_DIR))
 
     # Quick-start development settings - unsuitable for production
     ############################################
@@ -165,16 +162,12 @@ class AbstractBase(dj_mixins.AppsMixin, dj_mixins.MiddlewareMixin, dj_mixins.Tem
     # Static files management
     STATIC_URL = '/static/'
 
-    #    STATICFILES_DIRS = (
-    #        join(BASE_DIR, PROJECT_NAME, "static"),
-    #    )
-
     @property
     def STATICFILES_DIRS(self):
         return (join(self.BASE_DIR, self.PROJECT_NAME, "static"),)
 
     # Absolute path to the directory that holds static files.
-    STATIC_ROOT = join(BASE_DIR, 'staticfiles')
+    STATIC_ROOT = join(dirname(BASE_DIR), 'staticfiles')
 
     # Absolute path to the directory that holds media.
     MEDIA_ROOT = join(BASE_DIR, 'media')
@@ -195,8 +188,8 @@ class AbstractBase(dj_mixins.AppsMixin, dj_mixins.MiddlewareMixin, dj_mixins.Tem
     THUMBNAIL_HIGH_RESOLUTION = True
 
     # Internationalization
-    # https://docs.djangoproject.com/en/1.8/topics/i18n/
     ############################################
+    # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
     LANGUAGE_CODE = 'en'
 
@@ -224,6 +217,7 @@ class AbstractBase(dj_mixins.AppsMixin, dj_mixins.MiddlewareMixin, dj_mixins.Tem
     ############################################
     # Reset logging first
     # http://www.caktusgroup.com/blog/2015/01/27/Django-Logging-Configuration-logging_config-default-settings-logger/
+
     LOGGING_CONFIG = None
     LOGGING = {
         'version': 1,

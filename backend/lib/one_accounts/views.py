@@ -28,7 +28,7 @@ class AjaxableLoginView(FormView):
     This is a class based version of django.contrib.auth.views.login.
 
     Usage:
-        in urls.py:
+        in views.py:
             url(r'^login/$',
                 LoginView.as_view(
                     form_class=MyCustomAuthFormClass,

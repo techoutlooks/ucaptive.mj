@@ -1,0 +1,35 @@
+{% load i18n staticfiles sekizai_tags compress %}
+
+{{ forms.profile.media }}
+<div class="row">
+    <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center" ng-bind="::$ctrl.title"></h1>
+        <p class="text-xs-center">
+          <a ui-sref="app.login"
+            ng-show="$ctrl.authType === 'register'">
+            Have an account?
+          </a>
+          <a ui-sref="app.register"
+            ng-show="$ctrl.authType === 'login'">
+            Need an account?
+          </a>
+        </p>
+        <list-errors errors="$ctrl.errors"></list-errors>
+
+        <form name="{{ form_name }}" method="post" ng-submit="$ctrl.submitForm({{ form_name }})" novalidate>
+            {% csrf_token %}
+            <fieldset ng-disabled="$ctrl.isSubmitting">
+                {{ forms.user.as_div }}
+                {{ forms.profile.as_div }}
+                <div class="actions">
+                    <button type="submit" ng-disabled="{{ form_name }}.$invalid" ng-bind="::$ctrl.title" class="btn btn-primary pull-xs-rights"></button>
+                </div>
+            </fieldset>
+        </form>
+
+
+    </div>
+</div>
+
+
+{#{% addtoblock extra_js %}{{ forms.profile.media }} {% endaddtoblock js %}#}

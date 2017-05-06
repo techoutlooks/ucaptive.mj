@@ -2,9 +2,9 @@ from os.path import join
 
 from .staging import Staging
 from lib.settings.conf import ProdSettingsMixin
-from lib.settings.mixins import EmailMixin
+from lib.settings.mixins import SendMailMixin
 
 
-class Prod(EmailMixin, ProdSettingsMixin, Staging):
+class Prod(SendMailMixin, ProdSettingsMixin, Staging):
     """ Production settings with email logging. """
     pass

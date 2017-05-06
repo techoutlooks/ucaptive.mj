@@ -33,7 +33,8 @@ gulp.task('build', () => {
             './ucaptive/static/js/',
             './apps/layout/static/js/',
             './apps/accounts/static/js/',
-            './apps/djra/radmin/static/js/',
+            './lib/djra/radmin/static/js/',
+            './lib/djros/static/js/',
             './components/bower_components/',
             './components/vendor/',
         ]
@@ -48,7 +49,7 @@ gulp.task('build', () => {
     .pipe(rename('app.min.js'))
     // .pipe(uglify())
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./staticfiles/js/'));
+    .pipe(gulp.dest('../staticfiles/js/'));
     
 });
 

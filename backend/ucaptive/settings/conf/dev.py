@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from lib.settings.conf import DevSettingsMixin
-from .base import Base
+from .base import BaseSettings
 
 
-class Dev(DevSettingsMixin, Base):
+class Dev(DevSettingsMixin, BaseSettings):
     pass
 
 

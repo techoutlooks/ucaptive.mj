@@ -1,10 +1,11 @@
 
 
 const AuthConstants = {
-    USER_API: '/accounts/api/v1',
     USER_REGISTER: 'register',
     USER_LOGIN: 'login',
-    USER_LOGOUT: 'logout'
+    USER_LOGOUT: 'logout',
+
+    authApiUrl: '/accounts/api/v1/users/',
 };
 
 export default AuthConstants;

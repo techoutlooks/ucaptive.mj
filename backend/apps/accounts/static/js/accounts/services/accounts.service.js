@@ -1,21 +1,31 @@
 
+import {BaseApi} from 'services/base-api.service';
 
 
-    accounts.$inject = [];
+export default class AccountsService extends BaseApi {
+    constructor(JWT, Restangular, AppConstants, accountsConstants,
+                $http) {
+        'ngInject;'
+        super(Restangular);
 
-        /**
-        * @name register
-        * @desc Try to register a new user
-        * @param {string} username The username entered by the user
-        * @param {string} password The password entered by the user
-        * @param {string} email The email entered by the user
-        * @returns {Promise}
-        * @memberOf app.accounts.services.accounts
-        */
-        function register(email, password, username) {
-          return BaseApi.post('/api/v1/accounts/', {
-            username: username,
-            password: password,
-            email: email
-          });
-        }
+        // protected
+        this._JWT = JWT;
+        this._AppConstants = AppConstants;
+        this._accountsConstants = accountsConstants;
+        this._$http = $http;
+    }
+
+
+    // GET /reporter/api/v1/                    --> all ureporters.UReporter
+    // GET /reporter/api/v1/{mobile_number}/    --> single UReporter
+    get(username) {
+        var route = username || ''; var trailingSlash = username? '/': '';
+
+        return this._$http({
+            url: this._AppConstants.apiUrl + this._accountsConstants.apiUrl + route + trailingSlash,
+            headers: { "Api-Key": this._accountsConstants.apiKey},
+            method: 'GET'
+        }).then((res) => res.data, (err) => []);
+    }
+}
+

@@ -4,8 +4,8 @@ from collections import OrderedDict
 
 from data_importer.importers.generic import GenericImporter
 
-from accounts.models import Reporter, Profile
-from cities.models import Country, Region, City
+from apps.accounts.models import Reporter, Profile
+from apps.cities.models import Country, Region, City
 
 
 class UReportDataImporter(GenericImporter):

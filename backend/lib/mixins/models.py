@@ -26,7 +26,7 @@ class ModelFactoryMixin(object):
         A convenience method for updating an object with the given kwargs, creating a new one if necessary.
         Returns the created instance.
 
-        Applies to this model if no model given.
+        Called on a class, not object manager as for django.db.models. Applies to this model if no model given.
         """
         try:
             obj = cls.objects.get(**kwargs)
@@ -39,6 +39,10 @@ class ModelFactoryMixin(object):
             obj = cls(**kwargs)
             obj.save()
         return obj
+
+    def get_related_managers(self):
+        """ Get property names for all related objects """
+        return [getattr(self, rel.get_accessor_name()) for rel in self._meta.get_all_related_objects()]
 
 
 class FKeyModelFactoryMixin(ModelFactoryMixin):

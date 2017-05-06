@@ -8,7 +8,6 @@
 import angular from 'angular';
 
 
-
 /* Create and bootstrap application
  * Importing sub modules also registers them.
  * Import paths are relative to browserify's 'paths' option (Cf. gulpfile)
@@ -18,6 +17,7 @@ import 'layout';
 import 'accounts';
 import 'services';
 import 'radmin';
+import 'djros';
 
 const requires = [
     'ui.router',
@@ -29,7 +29,8 @@ const requires = [
     'app.layout',
     'app.accounts',
     
-    'app.radmin'
+    'app.radmin',
+    'app.djros'
 ];
 
 

@@ -8,17 +8,20 @@
 
 class AuthCtrl {
     constructor(User, RadUser, MikrotikHotspotUser, AuthConstants, RadminConstants,
-                $state, $rootScope, $window, $timeout, djangoForm) {
+                $http, $state, $scope, $window, $timeout, djangoForm) {
         'ngInject';
+
+        var vm = this;
 
         this._User = User;
         this._RadUser = RadUser;
         this._MikrotikHotspotUser = MikrotikHotspotUser;
         this._AuthConstants = AuthConstants;
         this._RadminConstants = RadminConstants;
+        this._$http = $http;
 
         this._$state = $state;
-        this._$rootScope = $rootScope;
+        this._$scope = $scope;
         this._$window = $window;
         this._$timeout = $timeout;
         this._djangoForm = djangoForm;
@@ -26,12 +29,54 @@ class AuthCtrl {
         this.title = $state.current.title;
         this.authType = $state.current.name.replace('app.', '');
 
+        // load country choices
+        var Guinea = 1;
+        this.getRegions(Guinea).then((regions) => {
+            this.regions = regions;
+        });
+
     }
 
+    regionChanged(){
+        this.getCities(this.profile.region).then(
+            (cities) => {
+                this.citys = cities;
+            });
+    }
+
+    // Get countries, regions, cities from django-autocomplete-light
+    getCountries() {
+        return this._$http.get('/cities/country-autocomplete/').then((res) => res.data.results );
+    }
+    getRegions(country) {
+        return this._$http.get('/cities/region-autocomplete/', {params: {
+            forward: {country: country}
+        }}).then((res) => res.data.results );
+    }
+    getCities(region) {
+        return this._$http.get('/cities/city-autocomplete/', {params: {
+            forward: {region: region}
+        }}).then((res) => res.data.results);
+    }
+
+
+
+    /* Create and/or log in a user vs. both Django & Mikrotik.
+
+     * User creation: First create Django user, if succeeds, create Radius account.
+     * Login: Anyway, Auth service (attemptAuth) will automatically login new/existing user vs. Django.
+     * Finally, the new or existing user is logged in to Mikrotik; then redirected to the home page.
+     */
     submitForm(form_name) {
         this.isSubmitting = true;
 
-        this._User.attemptAuth(this.authType, this.credentials).then(
+        // gather all user data form
+        var userData = this.credentials || {};
+        userData['profile'] = this.profile;
+        console.log(JSON.stringify(userData));
+
+        // create and/or login user
+        this._User.attemptAuth(this.authType, userData).then(
             (res) => {
                 switch(this.authType) {
                     case this._AuthConstants.USER_REGISTER:

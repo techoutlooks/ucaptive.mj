@@ -1,5 +1,5 @@
 // import authInterceptor from '../../../../apps/accounts/static/js/accounts/auth.interceptor'
-import authInterceptor from 'accounts/auth.interceptor'
+import authInterceptor from 'accounts/auth.interceptor';
 
 
 function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterProvider,

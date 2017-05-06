@@ -77,7 +77,7 @@ class Plan(models.Model):
 
     def get_credits_used(self):
         """
-        Gets the number of credits used by this org
+        Gets the number of credits used by this orgs
         """
         return get_cacheable_result(USER_CREDITS_USED_CACHE_KEY % self.pk, USER_CREDITS_CACHE_TTL,
                                     self._calculate_credits_used)
@@ -93,7 +93,7 @@ class Plan(models.Model):
 
     def get_credits_remaining(self):
         """
-        Gets the number of credits remaining for this org
+        Gets the number of credits remaining for this orgs
         """
         return self.get_credits_total() - self.get_credits_used()
 
