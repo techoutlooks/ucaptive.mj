@@ -5,7 +5,7 @@ media/
 staticfiles/
 logs/
 htmlcov/
-components/
-data/
+components/bower_components/
+components/node_modules/
 doc/
 .idea/

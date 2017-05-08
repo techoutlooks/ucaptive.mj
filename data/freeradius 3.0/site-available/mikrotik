@@ -1,0 +1,96 @@
+# -*- text -*-
+######################################################################
+#
+#       A virtual server to handle packets from Mikrotik NAS
+#       ceduth, Jan 5th 2017 06:5 PM
+#       
+#       Installs with:
+#           cd /etc/freeradius/sites-enabled
+#           ln -s ../sites-available/mikrotik .
+#           sudo nano mikrotik
+#
+######################################################################
+
+server mikrotik {
+        listen {
+                ipaddr = *
+                port = 18121
+                type = auth
+        }
+
+        listen {
+                ipaddr = *
+                port = 18131
+                type = acct
+        }
+
+        instantiate {
+        }
+
+        authorize {
+                filter_username
+                preprocess
+
+                chap
+                mschap
+                sql
+
+        #       expiration
+        #       logintime
+
+        }
+
+        authenticate {
+                Auth-Type PAP {
+                        pap
+                }
+
+                Auth-Type CHAP {
+                        chap
+                }
+
+                Auth-Type MS-CHAP {
+                        mschap
+                }
+
+        }
+        session {
+                sql
+        }
+
+        post-auth {
+                sql
+                exec
+        }
+
+        preacct {
+                acct_unique
+        }
+
+        accounting {
+                sql
+        }
+
+}
+
+
+#
+# NAS for project jeunesse.cloud.com.gn (gn1013.002)
+# test with: radtest 622970000 user1234 ns1.cloud.com.gn:18121 0 m0un@group
+#
+
+# Mikrotik router @Cerescore
+client 41.223.48.58 {
+        shortname       = gn1013-002
+        secret          = m0un@group
+        virtual_server  = mikrotik
+}
+
+# My l0-ceduth @Home Network
+client 41.223.49.56 {
+        shortname       = l0-ceduth
+        secret          = m0un@group
+        virtual_server  = mikrotik
+}
+
+

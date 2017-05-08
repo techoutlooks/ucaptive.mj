@@ -1,14 +1,10 @@
-Django==1.8.2
-django-celery==3.1.17
-  celery==3.1.23
-    billiard==3.3.0.23
-    kombu==3.0.34
-      amqp==1.4.9
-      anyjson==0.3.3
-django-celery-transactions==0.3.5
+amqp==1.4.9
+anyjson==0.3.3
 appdirs==1.4.3
 Babel==2.3.4
 BeautifulSoup==3.2.1
+billiard==3.3.0.23
+celery==3.1.23
 cffi==1.9.1
 cryptography==1.7.2
 data-importer==3.0.2
@@ -16,7 +12,10 @@ dj-database-url==0.4.1
 Django==1.8.2
 -e git+https://github.com/jrief/django-angular@220bf6390e9c83dbb0ad8a3247b9cfb8fda0f6ec#egg=django_angular
 django-appconf==1.0.2
+-e git+https://github.com/yourlabs/django-autocomplete-light.git@58ee0d7b9155c31e1bca9e94e488ffe648bf4110#egg=django_autocomplete_light
 django-autoslug==1.9.3
+django-celery==3.1.17
+django-celery-transactions==0.3.5
 -e git+https://github.com/yourlabs/django-cities-light.git@3bc210cff6714084be4a8ff6b4d640209bcdaa6e#egg=django_cities_light
 django-classy-tags==0.8.0
 django-compressor==2.1.1
@@ -44,7 +43,7 @@ django-split-settings==0.2.4
 django-templatetag-sugar==1.0
 django-test-utils==0.3
 djangorestframework==3.5.3
-drfapikey==0.0.3
+-e git+https://github.com/techoutlooks/django-rest-framework-api-key.git#egg=drfapikey
 easy-thumbnails==2.3
 enum34==1.1.6
 et-xmlfile==1.0.1
@@ -52,6 +51,7 @@ gunicorn==19.3.0
 idna==2.2
 ipaddress==1.0.18
 jdcal==1.3
+kombu==3.0.34
 mimeparse==0.1.3
 netaddr==0.7.19
 openpyxl==2.4.0

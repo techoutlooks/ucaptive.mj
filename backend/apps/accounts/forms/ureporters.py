@@ -118,10 +118,6 @@ class NgProfileForm(NgModelFormMixin, NgFormValidationMixin, Bootstrap3ModelForm
         # dal aka. autocomplete_light
         widgets = {
             'age': forms.NumberInput(attrs={'placeholder': _('Age')}),
-            # 'country': NgSelect(
-            #     # url='cities:country-autocomplete',
-            #     attrs={'autofocus': 'autofocus'}
-            # ),
             'region': NgModelSelect2(
                 url='cities:region-autocomplete',
                 forward=['country'],
@@ -142,6 +138,4 @@ class NgProfileForm(NgModelFormMixin, NgFormValidationMixin, Bootstrap3ModelForm
         for f in self.fields:
             self.fields[f].label = ''
             self.fields[f].help_text = ''
-
-        # self.fields['region'].widget.attrs.update({'ng-options': {ng-selected="job == 'tester'"})
 

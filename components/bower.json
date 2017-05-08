@@ -1,0 +1,27 @@
+{
+  "name": "ucaptive.mj",
+  "authors": [
+    "EC. <ceduth@techoutlooks.com>"
+  ],
+  "description": "uCaptive: angular dependancies.",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "jquery.meanmenu": "*",
+    "owl.carousel": "^2.2.1",
+    "nivo-slider": "*",
+    "scrollup": "^2.4.1",
+    "smooth-scroll": "^1.0.1",
+    "jQuery-One-Page-Nav": "^3.0.0"
+  }
+}

@@ -136,11 +136,13 @@ class BaseSettings(DjROSSettingsMixin, CompressorSettingsMixin, OrgTaskSettingsM
 
     # Adding CORS (Cross-Origin Resource Sharing) headers to responses.
     # Cf. https://github.com/ottoyiu/django-cors-headers/
-    CORS_ALLOW_CREDENTIALS = CORS_ORIGIN_ALLOW_ALL = DEBUG
 
-    # todo if debug
     CORS_ORIGIN_WHITELIST = (
         'localhost'
+        'ucaptive.cloud.com.gn:8000',
+        'jeunesse.cloud.com.gn:8000',
+        'ucaptive.cloud.com.gn',
+        'jeunesse.cloud.com.gn',
     )
 
     CORS_ALLOW_METHODS = (
@@ -158,10 +160,15 @@ class BaseSettings(DjROSSettingsMixin, CompressorSettingsMixin, OrgTaskSettingsM
         'origin',
         'authorization',
         'x-csrftoken',
-        'one-token'
+        'one-token',
+        'api-key',
     )
 
     # CORS_URLS_REGEX = r'^/api/.*$'
+
+    # override if debug
+    CORS_ALLOW_CREDENTIALS = CORS_ORIGIN_ALLOW_ALL = DEBUG
+
 
     ############################################
     # https://github.com/stefanfoulis/django-phonenumber-field

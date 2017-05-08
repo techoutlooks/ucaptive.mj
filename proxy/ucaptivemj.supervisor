@@ -2,15 +2,17 @@
 user = techu
 group = www-data
 command = /usr/local/bin/uwsgi --xmlconfig=/etc/uwsgi/apps-enabled/ucaptive.mj.xml
-
 autostart=true
 autorestart=true
 stderr_logfile = /srv/log/apps/ucaptive.mj/supervisor/err.log
 stdout_logfile = /srv/log/apps/ucaptive.mj/supervisor/out.log
 stopsignal=INT
 
-[program:ucaptive.mj-celeryd]
-command=/srv/.Envs/ucaptive.mj/bin/python /srv/apps/ucaptive.mj/backend/manage.py celery worker --app=mounagroup -B -l info -s /srv/log/apps/ucaptive.mj/celery/celerybeat-schedule
+[program:ucaptive.mj-celery(workers)]
+numprocs=2
+process_name=worker%(process_num)s
+directory = /srv/apps/ucaptive.mj/backend/
+command=/srv/.Envs/ucaptive.mj/bin/celery worker -A ucaptive -l DEBUG -n worker%(process_num)s.%%h --pidfile=/srv/log/apps/ucaptive.mj/celery/ucaptive-worker%(process_num)s.pid 
 user=techu
 group=techu
 stdout_logfile=/srv/log/apps/ucaptive.mj/celery/celeryd.log
@@ -20,14 +22,27 @@ autorestart=true
 startsecs=10
 stopwaitsecs=600
 
-[program:ucaptive.mj-flowers]
-command=/srv/.Envs/ucaptive.mj/bin/python /srv/apps/ucaptive.mj/backend/manage.py celery flower -A mounagroup --address=0.0.0.0 --port=5551
+[program:ucaptive.mj-celery(beat)]
+directory = /srv/apps/ucaptive.mj/backend/
+command=/srv/.Envs/ucaptive.mj/bin/celery beat -A ucaptive -l DEBUG -s /srv/log/apps/ucaptive.mj/celery/celerybeat-schedule --pidfile=/srv/log/apps/ucaptive.mj/celery/ucaptive-schedule.pid 
 user=techu
 group=techu
-stdout_logfile=/srv/log/apps/ucaptive.mj/celery/flower.log
-stderr_logfile=/srv/log/apps/ucaptive.mj/celery/flower.log
+stdout_logfile=/srv/log/apps/ucaptive.mj/celery/celeryd.log
+stderr_logfile=/srv/log/apps/ucaptive.mj/celery/celeryd.log
 autostart=true
 autorestart=true
 startsecs=10
 stopwaitsecs=600
+
+;[program:ucaptive.mj-celery(flowers)]
+;directory = /srv/apps/ucaptive.mj/backend/
+;command=/srv/.Envs/ucaptive.mj/bin/celery celery flower -A ucaptive --address=0.0.0.0 --port=5551
+;user=techu
+;group=techu
+;stdout_logfile=/srv/log/apps/ucaptive.mj/celery/flower.log
+;stderr_logfile=/srv/log/apps/ucaptive.mj/celery/flower.log
+;autostart=true
+;autorestart=true
+;startsecs=10
+;stopwaitsecs=600
 

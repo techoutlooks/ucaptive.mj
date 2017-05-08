@@ -17,7 +17,7 @@
     <link href="//fonts.googleapis.com/css?family=Titillium+Web:700|Source+Serif+Pro:400,700|Merriweather+Sans:400,700|Source+Sans+Pro:400,300,600,700,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
     <!-- Bootstrap CSS
     ============================================ -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}"/>
     <!-- Icon Font CSS
     ============================================ -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}"/>
@@ -99,31 +99,23 @@ todo: bowerize to build around jquery 1.12.0
 {% addtoblock js %}<script type="text/javascript" src="{% static 'vendor/wow.min.js' %}"></script>{% endaddtoblock js %}
 
 <!-- Google Map APi
-============================================ -->
-<script>
-    new WOW().init();
-</script>
+============================================
+<script> new WOW().init(); </script>
+-->
+
 <!-- Main JS
 ============================================ -->
-<!--<script type="text/javascript" src="{% static 'js/map1.js' %}"></script> -->
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/site.js' %}"></script>
 
 <!-- JQuery (django-autocomplete-light) 
 ============================================ -->
-<link href="/static/autocomplete_light/vendor/select2/dist/css/select2.css" type="text/css" media="all" rel="stylesheet" class="ng-scope">
-<link href="/static/autocomplete_light/select2.css" type="text/css" media="all" rel="stylesheet" class="ng-scope">
-<script type="text/javascript" src="/static/autocomplete_light/jquery.init.js" class="ng-scope"></script>
-<script type="text/javascript" src="/static/autocomplete_light/autocomplete.init.js" class="ng-scope"></script>
-<script type="text/javascript" src="/static/autocomplete_light/vendor/select2/dist/js/select2.full.js" class="ng-scope"></script>
-<script type="text/javascript" src="/static/autocomplete_light/select2.js" class="ng-scope"></script>
-
-{#{% addtoblock extra_css %}<link href="{% static 'autocomplete_light/vendor/select2/dist/css/select2.css' %}" rel="stylesheet" />{% endaddtoblock %}#}
-{#{% addtoblock extra_css %}<link href="{% static 'autocomplete_light/select2.css' %}" rel="stylesheet" />{% endaddtoblock %}#}
-{#{% addtoblock extra_js %}<script src="{% static 'autocomplete_light/jquery.init.js' %}"></script>{% endaddtoblock %}#}
-{#{% addtoblock extra_js %}<script src="{% static 'autocomplete_light/autocomplete.init.js' %}"></script>{% endaddtoblock %}#}
-{#{% addtoblock extra_js %}<script src="{% static 'autocomplete_light/vendor/select2/dist/js/select2.full.js' %}"></script>{% endaddtoblock %}#}
-{#{% addtoblock extra_js %}<script src="{% static 'autocomplete_light/select2.js' %}"></script>{% endaddtoblock %}#}
+{% addtoblock extra_css %}<link href="{% static 'autocomplete_light/vendor/select2/dist/css/select2.css' %}" type="text/css" media="all" rel="stylesheet" class="ng-scope" />{% endaddtoblock %}
+{% addtoblock extra_css %}<link href="{% static 'autocomplete_light/select2.css' %}" type="text/css" media="all" rel="stylesheet" class="ng-scope" />{% endaddtoblock %}
+{% addtoblock extra_js %}<script src="{% static 'autocomplete_light/jquery.init.js' class="ng-scope" %}"></script>{% endaddtoblock %}
+{% addtoblock extra_js %}<script src="{% static 'autocomplete_light/autocomplete.init.js' class="ng-scope" %}"></script>{% endaddtoblock %}
+{% addtoblock extra_js %}<script src="{% static 'autocomplete_light/vendor/select2/dist/js/select2.full.js' class="ng-scope" %}"></script>{% endaddtoblock %}
+{% addtoblock extra_js %}<script src="{% static 'autocomplete_light/select2.js' class="ng-scope" %}"></script>{% endaddtoblock %}
 
 <!-- AngularJS (vendors) 
 todo: convert to from...import'';
@@ -131,7 +123,7 @@ todo: convert to from...import'';
 {% addtoblock js %}<script src="{% static 'node_modules/lodash/lodash.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/underscore/underscore-min.js' %}"></script>{% endaddtoblock js %}
 
-{% addtoblock js %}<script src="{% static 'node_modules/angular/angular.js' %}"></script>{% endaddtoblock js %}
+{% addtoblock js %}<script src="{% static 'node_modules/angular/angular.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/angular-sanitize/angular-sanitize.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/angular-ui-router/release/angular-ui-router.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/restangular/dist/restangular.min.js' %}"></script>{% endaddtoblock js %}
@@ -139,14 +131,14 @@ todo: convert to from...import'';
 {% addtoblock js %}<script src="{% static 'node_modules/angular-bootstrap/ui-bootstrap-tpls.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/angular-cookies/angular-cookies.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/angular-ui-select/select.min.js' %}"></script>{% endaddtoblock js %}
-{% addtoblock js %}<script src="{% static 'djng/js/django-angular.js' %}"></script>{% endaddtoblock js %}
+{% addtoblock js %}<script src="{% static 'djng/js/django-angular.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/angular-animate/angular-animate.min.js' %}"></script>{% endaddtoblock js %}
 
 {% addtoblock js %}<script src="{% static 'node_modules/angular-simple-logger/dist/angular-simple-logger.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script src="{% static 'node_modules/angular-google-maps/dist/angular-google-maps.min.js' %}"></script>{% endaddtoblock js %}
 
 
-<!-- Angular (app) JS
+<!-- AngularJS (app)
 ============================================
 {%  if debug %}
     {#{% addtoblock js %}<script type="text/es6" src="{% static 'js/app.js' %}"></script>{% endaddtoblock js %}#}

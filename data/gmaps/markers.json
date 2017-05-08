@@ -1,0 +1,194 @@
+[
+	{
+		"id": "E4:8D:8C:CA:BA:E0",
+		"coords": {
+			"latitude": "9.5815361",
+			"longitude": "-13.6599326"
+		},
+		"options": {
+			"labelContent": "MJ",
+			"labelAnchor": "12 60",
+			"labelClass": "labelClass",
+			"animation": 1
+		},
+		"window": {
+			"title": "CAP RATOMA HAP"
+		}
+	},
+	{
+		"id": "D4:CA:6D:B7:A1:FB",
+		"coords": {
+			"latitude": "9.5815361",
+			"longitude": "-13.6599326"
+		},
+		"options": {
+			"labelContent": "MJ",
+			"labelAnchor": "12 60",
+			"labelClass": "labelClass",
+			"animation": 1
+		},
+		"window": {
+			"title": "CAP RATOMA SXT"
+		}
+	},
+	{
+		"id": "E4:8D:8C:C9:DA:4E",
+		"coords": {
+			"latitude": "9.620792",
+			"longitude": "-13.639046"
+		},
+		"options": {
+			"labelContent": "MJ",
+			"labelAnchor": "12 60",
+			"labelClass": "labelClass",
+			"animation": 1
+		},
+		"window": {
+			"title": "CAP NONGO HAP"
+		}
+	},
+	{
+		"id": "E4:8D:8C:D6:B4:09",
+		"coords": {
+			"latitude": "9.620792",
+			"longitude": "-13.639046"
+		},
+		"options": {
+			"labelContent": "MJ",
+			"labelAnchor": "12 60",
+			"labelClass": "labelClass",
+			"animation": 1
+		},
+		"window": {
+			"title": "CAP NONGO SXT"
+		}
+	},
+	{
+		"id": "E4:8D:8C:4E:69:6C",
+		"coords": {
+			"latitude": "8.354487",
+			"longitude": "-10.518048"
+		},
+		"options": {
+			"labelContent": "MJ",
+			"labelAnchor": "12 60",
+			"labelClass": "labelClass",
+			"animation": 1
+		},
+		"window": {
+			"title": "CAP KOLOMA HAP"
+		}
+	},
+	{
+		"id": "E4:8D:8C:D6:B4:36",
+		"coords": {
+			"latitude": "8.354487",
+			"longitude": "-10.518048"
+		},
+		"options": {
+			"labelContent": "MJ",
+			"labelAnchor": "12 60",
+			"labelClass": "labelClass",
+			"animation": 1
+		},
+		"window": {
+			"title": "CAP KOLOMA SXT"
+		}
+	},
+	{
+		"id": "E4:8D:8C:40:A1:51",
+		"coords": {
+			"latitude": "9.566587",
+			"longitude": "-13.633472"
+		},
+		"options": {
+			"labelContent": "MJ",
+			"labelAnchor": "12 60",
+			"labelClass": "labelClass",
+			"animation": 1
+		},
+		"window": {
+			"title": "CAP MATAM HAP"
+		}
+	},
+	{
+		"id": "E4:8D:8C:D6:B4:03",
+		"coords": {
+			"latitude": "9.566587",
+			"longitude": "-13.633472"
+		},
+		"options": {
+			"labelContent": "MJ",
+			"labelAnchor": "12 60",
+			"labelClass": "labelClass",
+			"animation": 1
+		},
+		"window": {
+			"title": "CAP MATAM SXT"
+		}
+	},
+	{
+		"id": "E4:8D:8C:CA:BA:18",
+		"coords": {
+			"latitude": "9.567197",
+			"longitude": "-13.630837"
+		},
+		"options": {
+			"labelContent": "MJ",
+			"labelAnchor": "12 60",
+			"labelClass": "labelClass",
+			"animation": 1
+		},
+		"window": {
+			"title": "CAP GBESSIA CENTRE HAP"
+		}
+	},
+	{
+		"id": "D4:CA:6D:B7:A0:8A",
+		"coords": {
+			"latitude": "9.567197",
+			"longitude": "-13.630837"
+		},
+		"options": {
+			"labelContent": "MJ",
+			"labelAnchor": "12 60",
+			"labelClass": "labelClass",
+			"animation": 1
+		},
+		"window": {
+			"title": "CAP GBESSIA CENTRE SXT"
+		}
+	},
+	{
+		"id": "E4:8D:8C:C9:D9:E5",
+		"coords": {
+			"latitude": "9.5348519",
+			"longitude": "-13.6862071"
+		},
+		"options": {
+			"labelContent": "MJ",
+			"labelAnchor": "12 60",
+			"labelClass": "labelClass",
+			"animation": 1
+		},
+		"window": {
+			"title": "CAP CAMAYENNE HAP"
+		}
+	},
+	{
+		"id": "E4:8D:8C:D6:B2:DD",
+		"coords": {
+			"latitude": "9.5348519",
+			"longitude": "-13.6862071"
+		},
+		"options": {
+			"labelContent": "MJ",
+			"labelAnchor": "12 60",
+			"labelClass": "labelClass",
+			"animation": 1
+		},
+		"window": {
+			"title": "CAP CAMAYENNE SXT"
+		}
+	}
+]

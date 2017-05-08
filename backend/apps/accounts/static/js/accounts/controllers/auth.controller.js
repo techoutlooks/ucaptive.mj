@@ -44,7 +44,12 @@ class AuthCtrl {
             });
     }
 
-    // Get countries, regions, cities from django-autocomplete-light
+    /* TODO: create DjangoAutoCompleteLightService in sub module app.layout.dal
+         with getCountries(), getRegions(), getCities()
+         get GET url dynamically from <select.../> attrs,
+         eg. data-autocomplete-light-url="/en/cities/region-autocomplete/"
+
+     */
     getCountries() {
         return this._$http.get('/cities/country-autocomplete/').then((res) => res.data.results );
     }
