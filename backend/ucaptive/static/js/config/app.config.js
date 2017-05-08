@@ -14,6 +14,13 @@ function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterP
 
 
     /* --
+     Dealing with Django translation inside AngularJS partials (ng-view)
+     ------------------------------------------------------------*/
+    var language = window.location.pathname.split('/')[1];
+    $httpProvider.defaults.headers.common["Accept-Language"] = language;
+    
+    
+    /* --
     Configure template processors. Eg.: '{{..}}' (Django) vs '[[..]]' (angularjs)
      ------------------------------------------------------------*/
     $interpolateProvider.startSymbol('[[').endSymbol(']]');
@@ -25,7 +32,6 @@ function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterP
 
     /* --
     If you don't want hashbang routing, uncomment this line.
-    Our tutorial will be using hashbang routing though :)
     ------------------------------------------------------------*/
     // $locationProvider.html5Mode(true);
     $stateProvider

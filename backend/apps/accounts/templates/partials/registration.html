@@ -7,11 +7,11 @@
         <p class="text-xs-center">
           <a ui-sref="app.login"
             ng-show="$ctrl.authType === 'register'">
-            Have an account?
+            {% trans "Have an account?" %}
           </a>
           <a ui-sref="app.register"
             ng-show="$ctrl.authType === 'login'">
-            Need an account?
+            {% trans "Need an account?" %}
           </a>
         </p>
         <list-errors errors="$ctrl.errors"></list-errors>

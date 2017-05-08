@@ -14,7 +14,7 @@ class NgSelect(Select):
         ng_choices = "$ctrl.{}s".format(name)
         ng_selected = ""
 
-        attrs['ng-init'] = "{}={}[0]".format(ng_model, ng_choices)
+        # attrs['ng-init'] = "{}={}[0]".format(ng_model, ng_choices)
         attrs['ng-options'] = "choice.id as choice.text for choice in {choices} track by choice.id {selected}"\
             .format(choices=ng_choices, selected=ng_selected)
         attrs['ng-change'] = "{}.{}Changed()".format(controller_as, name)

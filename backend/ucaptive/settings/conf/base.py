@@ -162,6 +162,7 @@ class BaseSettings(DjROSSettingsMixin, CompressorSettingsMixin, OrgTaskSettingsM
         'x-csrftoken',
         'one-token',
         'api-key',
+        'Accept-Language',
     )
 
     # CORS_URLS_REGEX = r'^/api/.*$'

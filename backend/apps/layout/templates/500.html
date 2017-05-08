@@ -1,5 +1,14 @@
-<html>
-<body>
-<h1>500 Error</h1>
-</body>
-</html>
+{% extends "theme.html" %}
+{% load i18n staticfiles sekizai_tags %}
+
+
+{% block page %}
+
+<h1>500 Error. A report was already emailed to: support@techoutlooks.com</h1>
+<p>
+    {% trans "A report was already emailed to:" %} &nbsp; support@techoutlooks.com
+    {% trans "They are usually very proactive. Thank you for you patience." %}
+</p>
+
+{% addtoblock extra_css %}<link href="{% static 'css/main.css' %}" rel="stylesheet" />{% endaddtoblock %}
+{% endblock %}

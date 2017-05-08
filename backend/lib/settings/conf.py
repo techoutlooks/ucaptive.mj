@@ -15,7 +15,8 @@ from os.path import exists, join, dirname, abspath
 from configurations import Configuration, values
 from . import mixins as dj_mixins
 
-_ = lambda x: x.encode('latin')
+from django.utils.translation import ugettext_lazy as _
+# _ = lambda x: x.encode('latin')
 
 
 class DevSettingsMixin(object):
@@ -203,7 +204,7 @@ class AbstractBaseSettings(dj_mixins.AppsMixin, dj_mixins.MiddlewareMixin, dj_mi
         ('en', _('English')),
     )
     LOCALE_PATHS = (
-        join(BASE_DIR, 'locale'),
+        join(dirname(BASE_DIR), 'locale'),
     )
 
     FIXTURE_DIRS = (

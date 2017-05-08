@@ -1,4 +1,4 @@
-# coding=utf8
+# -*- coding: utf-8 -*-
 # settings/mixins/search.py
 
 from __future__ import unicode_literals

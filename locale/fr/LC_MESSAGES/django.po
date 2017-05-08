@@ -1,0 +1,518 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Edouard Carvalho <ceduth@techoutlooks.com>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-08 12:27+0000\n"
+"PO-Revision-Date: 2017-05-08 12:28+0000\n"
+"Last-Translator: Edouard Carvalho <ceduth@techoutlooks.com>\n"
+"Language-Team: Support Group @TechOutlooks\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+
+#: apps/accounts/app.py:11
+msgid "This Project's Users"
+msgstr "Utilisateurs"
+
+#: apps/accounts/constants.py:6
+msgid "Invalid! Guinea local numbers only. 9 digits and no +"
+msgstr ""
+"Invalide! Numéros locaux Guinéens uniquement. 9 chiffres. Pas de \"+224\" ni "
+"\"00224\". "
+
+#: apps/accounts/constants.py:10
+msgid "Man"
+msgstr "Homme"
+
+#: apps/accounts/constants.py:11
+msgid "Woman"
+msgstr "Femme"
+
+#: apps/accounts/forms/ureporters.py:51 apps/accounts/forms/ureporters.py:69
+msgid "Mobile Number"
+msgstr "Num. Mobile"
+
+#: apps/accounts/forms/ureporters.py:54 apps/accounts/forms/ureporters.py:72
+msgid "Password"
+msgstr "Mot de passe"
+
+#: apps/accounts/forms/ureporters.py:74
+msgid "Email"
+msgstr "Email"
+
+#: apps/accounts/forms/ureporters.py:75
+msgid "First Name"
+msgstr "Prénoms"
+
+#: apps/accounts/forms/ureporters.py:76
+msgid "Last Name"
+msgstr "Nom"
+
+#: apps/accounts/forms/ureporters.py:77
+msgid "Total connection time"
+msgstr "Temps de connexion"
+
+#: apps/accounts/forms/ureporters.py:103
+msgid "This mobile phone is already in use. Please supply a different one."
+msgstr "Numéro déjà enregistré. Veuillez en fournir un autre."
+
+#: apps/accounts/forms/ureporters.py:112
+msgid "Sex?"
+msgstr "Sexe"
+
+#: apps/accounts/forms/ureporters.py:120
+msgid "Age"
+msgstr "Age"
+
+#: apps/accounts/forms/ureporters.py:124 apps/accounts/models/ureporters.py:143
+msgid "What region are you from?"
+msgstr "Votre région?"
+
+#: apps/accounts/forms/ureporters.py:129
+msgid "Your birth place?"
+msgstr "Lieu de naissance?"
+
+#: apps/accounts/models/ureporters.py:41
+msgid "You must provide your U-Reporter's mobile phone number"
+msgstr "Vous devez fournir un numéro de mobile connu de U-Report!"
+
+#: apps/accounts/models/ureporters.py:79
+msgid "u-reporter"
+msgstr "u-reporter"
+
+#: apps/accounts/models/ureporters.py:80
+msgid "u-reporters"
+msgstr "u-reporters"
+
+#: apps/accounts/models/ureporters.py:137
+msgid "Sex"
+msgstr "Sexe"
+
+#: apps/accounts/models/ureporters.py:139
+msgid "Total connection time."
+msgstr "Temps de connexion"
+
+#: apps/accounts/models/ureporters.py:142
+msgid "What country are you from?"
+msgstr "Votre région?"
+
+#: apps/accounts/models/ureporters.py:144
+msgid "Your birth place."
+msgstr "Lieu de naissance?"
+
+#: apps/accounts/models/user_constants.py:25
+msgid "Free Plan"
+msgstr ""
+
+#: apps/accounts/models/user_constants.py:26
+msgid "Trial"
+msgstr "Essai"
+
+#: apps/accounts/models/user_constants.py:27
+msgid "Bronze"
+msgstr ""
+
+#: apps/accounts/models/user_constants.py:28
+msgid "Silver"
+msgstr ""
+
+#: apps/accounts/models/user_constants.py:29
+msgid "Gold (Legacy)"
+msgstr ""
+
+#: apps/accounts/models/user_constants.py:30
+msgid "Platinum (Legacy)"
+msgstr ""
+
+#: apps/accounts/models/user_constants.py:31
+msgid "Gold"
+msgstr ""
+
+#: apps/accounts/models/user_constants.py:32
+msgid "Platinum"
+msgstr ""
+
+#: apps/accounts/models/users_limits.py:29
+msgid "Plan"
+msgstr ""
+
+#: apps/accounts/models/users_limits.py:30
+msgid "What plan the user is on"
+msgstr ""
+
+#: apps/accounts/models/users_limits.py:31
+msgid "Plan Start"
+msgstr ""
+
+#: apps/accounts/models/users_limits.py:32
+msgid "When the user switched to this plan"
+msgstr ""
+
+#: apps/accounts/models/users_limits.py:33
+msgid "Timezone"
+msgstr "Fuseau horaire"
+
+#: apps/accounts/models/users_limits.py:34
+msgid "Slug"
+msgstr "Slug"
+
+#: apps/accounts/models/users_limits.py:35
+msgid "This slug is not available"
+msgstr "Ce slug n'est pas disponible"
+
+#: apps/accounts/models/users_limits.py:120
+msgid "Price Paid"
+msgstr ""
+
+#: apps/accounts/models/users_limits.py:121
+msgid "The price paid for the products in this top up (in cents)"
+msgstr ""
+
+#: apps/accounts/models/users_limits.py:122
+msgid "Number of Credits"
+msgstr "Nb. de crédits"
+
+#: apps/accounts/models/users_limits.py:123
+msgid "The number of credits bought in this top up"
+msgstr ""
+
+#: apps/accounts/models/users_limits.py:124
+msgid "Expiration Date"
+msgstr "Date d'expiration"
+
+#: apps/accounts/models/users_limits.py:125
+msgid "The date that this top up will expire"
+msgstr "La date à laquelle cette recharge expirera"
+
+#: apps/accounts/models/users_limits.py:126
+msgid "Stripe Charge Id"
+msgstr ""
+
+#: apps/accounts/models/users_limits.py:127
+msgid "The Stripe charge id for this charge"
+msgstr ""
+
+#: apps/accounts/models/users_limits.py:189
+msgid "The topup these credits are being used against"
+msgstr ""
+
+#: apps/accounts/models/users_limits.py:190
+msgid "How many credits were used, can be negative"
+msgstr ""
+
+#: apps/accounts/templates/partials/auth.html:10
+#: apps/accounts/templates/partials/registration.html:10
+msgid "Have an account?"
+msgstr "Vous disposez déjà d'un compte U-Report?"
+
+#: apps/accounts/templates/partials/auth.html:14
+#: apps/accounts/templates/partials/registration.html:14
+msgid "Need an account?"
+msgstr "Besoin d'un compte gratuit?"
+
+#: apps/layout/templates/500.html:9
+msgid "A report was already emailed to:"
+msgstr "Un rapport a déjà été envoyé par courrier électronique à:"
+
+#: apps/layout/templates/500.html:10
+msgid "They are usually very proactive. Thank you for you patience."
+msgstr "Ils sont généralement très proactifs. Merci pour votre patience."
+
+#: apps/layout/templates/components/footer.html:6
+msgid ".cloud.com.gn"
+msgstr ".cloud.com.gn"
+
+#: apps/layout/templates/components/footer.html:11
+msgid "TechOutlooks Sarl"
+msgstr "TechOutlooks Sarl"
+
+#: apps/layout/templates/components/header.html:28
+#: apps/layout/templates/components/header.html:58
+msgid "Home"
+msgstr "Accueil"
+
+#: apps/layout/templates/components/header.html:36
+msgid "Sign in"
+msgstr "Se connecter"
+
+#: apps/layout/templates/components/header.html:44
+msgid "Sign up"
+msgstr "S'inscrire (gratuit)"
+
+#: apps/layout/templates/components/header.html:66
+msgid "WiFi"
+msgstr "WiFi"
+
+#: apps/layout/templates/components/header.html:74
+msgid "News"
+msgstr "Infos"
+
+#: apps/layout/templates/partials/about.html:23
+#| msgid ""
+#| " uCaptive is project by the State Department for Youth to close the "
+#| "digital gap, especially touching research studies.\n"
+#| "                               It also tighly integrate with UNICEF's U-"
+#| "REPORT Guinea for youth profiling. To use the u-captive portal, be sure "
+#| "first to register at:\n"
+#| "                            "
+msgid ""
+"uCaptive is project by the State Department for Youth to close the digital "
+"gap, especially touching research studies."
+msgstr ""
+"UCaptive est un projet du Ministère Guinéen de la Jeunesse pour combler "
+"l'écart numérique, en particulier touchant les études et la recherche."
+
+#: apps/layout/templates/partials/about.html:24
+#| msgid ""
+#| " uCaptive is project by the State Department for Youth to close the "
+#| "digital gap, especially touching research studies.\n"
+#| "                               It also tighly integrate with UNICEF's U-"
+#| "REPORT Guinea for youth profiling. To use the u-captive portal, be sure "
+#| "first to register at:\n"
+#| "                            "
+msgid ""
+"It also tighly integrate with UNICEF's U-REPORT Guinea for youth profiling. "
+"To use the u-captive portal, be sure first to register at:"
+msgstr ""
+"Il s'intègre notamment avec U-REPORT d'UNICEF Guinée pour le profilage des "
+"jeunes. Pour utiliser le portail u-captive, assurez-vous d'abord de disposer "
+"d'un compte à:"
+
+#: apps/layout/templates/partials/about.html:29
+msgid "Hotspots"
+msgstr "WIFIs"
+
+#: apps/layout/templates/partials/about.html:34
+msgid "Reporters"
+msgstr "Reporters"
+
+#: apps/layout/templates/partials/about.html:39
+msgid "Active"
+msgstr "Connecté"
+
+#: apps/layout/templates/partials/about.html:44
+msgid "Live Usage"
+msgstr "Stats"
+
+#: apps/layout/templates/partials/services.html:31
+msgid "Helpdesk"
+msgstr "Assistance"
+
+#: apps/layout/templates/partials/services.html:40
+msgid "Library"
+msgstr "Bibliothèque"
+
+#: apps/layout/templates/partials/services.html:50
+msgid "Opportunities"
+msgstr "Opportunités"
+
+#: apps/layout/templates/partials/services.html:61
+msgid "E-Community"
+msgstr "Communauté en ligne"
+
+#: lib/djra/freeradius/apps.py:6
+msgid "FreeRadius 3.0"
+msgstr "FreeRadius 3.0"
+
+#: lib/djra/radmin/forms.py:22 lib/djra/radmin/forms.py:42
+msgid "Only letters, digests and .@-_ are allowed."
+msgstr "Seules les lettres, les digests et les. @ -_ sont autorisés."
+
+#: lib/djra/radmin/forms.py:26
+msgid "comma seprated group list, no space; eg \"default,test\""
+msgstr ""
+"Liste de groupes séparés par des virgules, pas d'espace; ex: \"default\", "
+"\"test\""
+
+#: lib/djra/radmin/forms.py:27
+msgid "Only letters, digests and ._ are allowed as group name."
+msgstr ""
+"Seuls les lettres, les digests et ._ sont autorisés dans les noms de groupe."
+
+#: lib/djra/radmin/forms.py:48 lib/djra/radmin/forms.py:55
+msgid "Only letters, digests and -_ are allowed."
+msgstr "Seuls les lettres, les digests et -_ sont autorisés."
+
+#: lib/djra/radmin/templates/radmin/home.html:13
+#, python-format
+msgid " %(active_user_count)s active users. "
+msgstr " %(active_user_count)s utilisateurs connectés. "
+
+#: lib/djra/radmin/templates/radmin/home.html:15
+#, python-format
+msgid " %(suspended_user_count)s suspended users. "
+msgstr " %(suspended_user_count)s utlisateurs suspendus. "
+
+#: lib/djra/radmin/templates/radmin/home.html:22
+#, python-format
+msgid " %(group_count)s groups. "
+msgstr " %(group_count)s groupes. "
+
+#: lib/djros/app.py:15
+msgid "Django RouterOS"
+msgstr "Django RouterOS"
+
+#: lib/mixins/views/ajax.py:38 lib/one_accounts/views.py:68
+msgid "Your message has been sent successfully."
+msgstr "Votre message a été envoyé avec succès."
+
+#: lib/one_accounts/models.py:56
+msgid "first name"
+msgstr "Prénoms"
+
+#: lib/one_accounts/models.py:57
+msgid "last name"
+msgstr "Nom"
+
+#: lib/one_accounts/models.py:61
+msgid "active"
+msgstr "Connecté"
+
+#: lib/one_accounts/models.py:62
+msgid "staff"
+msgstr "staff"
+
+#: lib/one_accounts/templates/one_accounts/activate.html:15
+msgid "Account activation failed"
+msgstr "L'activation du compte a échoué"
+
+#: lib/one_accounts/templates/one_accounts/activation_complete.html:14
+msgid "Your account is now activated."
+msgstr "Votre compte est maintenant activé."
+
+#: lib/one_accounts/templates/one_accounts/activation_email.txt:29
+msgid "Activate account at"
+msgstr "Activer le compte à"
+
+#: lib/one_accounts/templates/one_accounts/activation_email.txt:33
+#, python-format
+msgid "Link is valid for %(expiration_days)s days."
+msgstr "Le lien est valable pour %(expiration_days)s jours."
+
+#: lib/one_accounts/templates/one_accounts/activation_email_subject.txt:30
+msgid "Account activation on"
+msgstr "Activation du compte le"
+
+#: lib/one_accounts/templates/one_accounts/ajax/login.html:3
+#: lib/one_accounts/templates/one_accounts/login.html:36
+msgid "Login"
+msgstr "S'identifier"
+
+#: lib/one_accounts/templates/one_accounts/ajax/registration_form.html:3
+#: lib/one_accounts/templates/one_accounts/login.html:44
+#: lib/one_accounts/templates/one_accounts/registration_form.html:28
+msgid "Register"
+msgstr "S'enregister"
+
+#: lib/one_accounts/templates/one_accounts/login.html:45
+msgid "Demo (48h)"
+msgstr "Démo (48h)"
+
+#: lib/one_accounts/templates/one_accounts/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this e-mail because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+"Vous recevez cet e-mail car vous avez demandé une réinitialisation de mot de "
+"passe pour votre compte d'utilisateur à %(site_name)s."
+
+#: lib/one_accounts/templates/one_accounts/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr "Passez à la page suivante et choisissez un nouveau mot de passe:"
+
+#: lib/one_accounts/templates/one_accounts/password_reset_email.html:9
+msgid "Thanks for using our site!"
+msgstr "Merci d'utiliser notre site!"
+
+#: lib/one_accounts/templates/one_accounts/password_reset_email.html:11
+#, python-format
+msgid "The %(site_name)s team"
+msgstr "The %(site_name)s team"
+
+#: lib/one_accounts/templates/one_accounts/password_reset_subject.txt:2
+msgid "Account Request"
+msgstr "Demande de création compte"
+
+#: lib/one_accounts/templates/one_accounts/registration_complete.html:15
+msgid "You are now registered. Activation email sent."
+msgstr "Vous êtes maintenant inscrit. Message d'activation envoyé."
+
+#: lib/one_accounts/templates/one_accounts/registration_form.html:17
+msgid "Register for an account"
+msgstr "Enregistrez-vous"
+
+#: lib/one_accounts/templates/one_accounts/registration_form.html:22
+msgid "Registration"
+msgstr "Enrollement"
+
+#: lib/one_accounts/views.py:45
+msgid "Your account were successfully created."
+msgstr "Votre compte a été créé avec succès."
+
+#: lib/one_auth/serializers.py:19
+msgid "Must include \"email\" and \"password\"."
+msgstr "Doit inclure votre email ET mot de passe."
+
+#: lib/one_auth/serializers.py:30
+msgid "Must include \"username\" and \"password\"."
+msgstr "Doit inclure votre nom d'utilisateur ET mot de passe."
+
+#: lib/one_auth/serializers.py:42
+msgid "Must include either \"username\" or \"email\" and \"password."
+msgstr "Doit inclure votre nom d'utilisateur OU email ET mot de passe."
+
+#: lib/one_auth/serializers.py:62
+msgid "User account is disabled."
+msgstr "Le compte d'utilisateur est désactivé."
+
+#: lib/one_auth/serializers.py:65
+msgid "Unable to log in with provided credentials."
+msgstr ""
+"Impossible de se connecter avec les informations d'identification fournies."
+
+#: lib/settings/conf.py:203
+msgid "Français"
+msgstr "Français"
+
+#: lib/settings/conf.py:204
+msgid "English"
+msgstr "Anglais"
+
+#: lib/settings/mixins/cms.py:240 lib/settings/mixins/cms.py:264
+#: lib/settings/mixins/cms.py:273 lib/settings/mixins/cms.py:279
+#: lib/settings/mixins/cms.py:286
+msgid "Default"
+msgstr "Par défaut"
+
+#: lib/settings/mixins/cms.py:241
+msgid "Featured"
+msgstr "En vedette"
+
+#: lib/settings/mixins/cms.py:242 lib/settings/mixins/cms.py:274
+#: lib/settings/mixins/cms.py:287
+msgid "Footer"
+msgstr "Bas de page"
+
+#: lib/settings/mixins/cms.py:265
+msgid "Sidebar"
+msgstr "Barre latérale"
+
+#: lib/settings/mixins/cms.py:280
+msgid "Video"
+msgstr "Vidéo"
+
+#: lib/settings/mixins/cms.py:486
+msgid "Default Page"
+msgstr "Page par défaut"
+
+#: lib/settings/mixins/cms.py:605
+msgid "Thanks for purchasing at shopext"
+msgstr "Merci d'avoir acheté chez shopext"
