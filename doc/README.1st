@@ -1,0 +1,122 @@
+
+# Bootstrap
+
+Assumes npm and bower installed:
+sudo npm install -g bower gulp
+
+ manage.py migrate contenttypes && ./manage.py migrate auth
+./manage.py migrate
+./manage.py migrate --database radius
+
+ cd components/ && npm install
+ 
+
+## initial data
+
+./manage.py cities_light_fixtures load
+./manage.py loaddata ../data/fixtures/mjej_org.json
+./manage.py loaddata ../data/fixtures/mjej_capsman.json
+
+
+## build/collect static files
+
+gulp build                                                              # build (only) angular apps
+./manage.py collectstatic                                               # if Dev settings
+
+
+## run web server & tasks
+
+
+./manage.py runserver_plus 0:8000                                       # or run 'gulp' to also run 'start_django_dev_server' gulp task
+celery -A ucaptive worker -B -l debug -s ../logs/celerybeat-schedule    # run dev webserver & single worker.
+ 
+
+./manage.py collectstatic  --configuration=Staging                      # if Staging or Prod settings, ie. STATIC_ROOT = /var/www/html/apps/ucaptive.mj/public/static
+./manage.py runserver_plus 0:8000 --configuration=Staging               # run dev webserver and
+celery worker -A ucaptive  -l DEBUG                                     # run multiple workers
+celery -A ucaptive beat -l DEBUG                                        # and schedulers
+
+
+## debugging
+
+tail -f /srv/log/apps/ucaptive.mj/celery/celeryd.log
+celery -A ucaptive inspect registered
+-> celery@l0-ceduth: OK
+    * apps.orgs.tasks.ScheduleTaskForActiveOrgs
+    * data_importer_task
+    * djros.tasks.SyncCapsMan
+    * ucaptive.celery.debug_task
+
+
+
+# API Testing
+
+## endpoints listing
+
+/accounts/api/v1/
+/djra/api/v1/
+/djros/api/v1/
+
+
+## commands
+
+
+# following sets headers, wrong.
+curl http://localhost:8000/accounts/api/v1/ -H "Authorization: Api-Key 17865ac4a3a40a5efb62191282620e7df19f2b79"
+
+{'wsgi.multiprocess': False, 'SERVER_SOFTWARE': 'Werkzeug/0.11.15', 'SCRIPT_NAME': u'', 'REQUEST_METHOD': 'GET', 'PATH_INFO': u'/accounts/api/v1/', 'SERVER_PROTOCOL': 'HTTP/1.1', 'QUERY_STRING': '', 'CONTENT_LENGTH': '', 'HTTP_USER_AGENT': 'HTTPie/0.9.2', 'HTTP_CONNECTION': 'keep-alive', 'SERVER_NAME': '0.0.0.0', 'REMOTE_PORT': 39102, 'wsgi.url_scheme': 'http', 'SERVER_PORT': '8000', 'werkzeug.request': <BaseRequest 'http://localhost:8000/accounts/api/v1/' [GET]>, 'HTTP_API_KEY': '17865ac4a3a40a5efb62191282620e7df19f2b79', 'wsgi.input': <open file '<socket>', mode 'rb' at 0x7f7c128c5300>, 'HTTP_HOST': 'localhost:8000', 'wsgi.multithread': True, 'HTTP_ACCEPT': '*/*', 'wsgi.version': (1, 0), 'wsgi.run_once': False, 'wsgi.errors': <open file '<stderr>', mode 'w' at 0x7f7c1cf871e0>, 'REMOTE_ADDR': '127.0.0.1', 'CONTENT_TYPE': '', u'CSRF_COOKIE': u'vDsv2vf2dk2e8xtNl5rgv3GVTypQbxr3', 'HTTP_ACCEPT_ENCODING': 'gzip, deflate'}
+
+
+# correct call via httpie or curl
+# don't forget trailing slashes
+
+curl http://localhost:8000/accounts/api/v1/ -H "Api-Key:17865ac4a3a40a5efb62191282620e7df19f2b79"
+http GET http://localhost:8000/accounts/api/v1/ Api-Key:17865ac4a3a40a5efb62191282620e7df19f2b79
+
+{'HTTP_AUTHORIZATION': 'Api-Key 17865ac4a3a40a5efb62191282620e7df19f2b79', 'wsgi.multiprocess': False, 'SERVER_SOFTWARE': 'Werkzeug/0.11.15', 'SCRIPT_NAME': u'', 'REQUEST_METHOD': 'GET', 'PATH_INFO': u'/accounts/api/v1/', 'SERVER_PROTOCOL': 'HTTP/1.1', 'QUERY_STRING': '', 'CONTENT_LENGTH': '', 'HTTP_USER_AGENT': 'curl/7.47.0', 'SERVER_NAME': '0.0.0.0', 'REMOTE_PORT': 39090, 'wsgi.url_scheme': 'http', 'SERVER_PORT': '8000', 'werkzeug.request': <BaseRequest 'http://localhost:8000/accounts/api/v1/' [GET]>, 'wsgi.input': <open file '<socket>', mode 'rb' at 0x7fc14b013270>, 'HTTP_HOST': 'localhost:8000', 'wsgi.multithread': True, 'HTTP_ACCEPT': '*/*', 'wsgi.version': (1, 0), 'wsgi.run_once': False, 'wsgi.errors': <open file '<stderr>', mode 'w' at 0x7fc1556d51e0>, 'REMOTE_ADDR': '127.0.0.1', 'CONTENT_TYPE': '', u'CSRF_COOKIE': u'eFrioZawx3iwIIjfUpQc0oXPc275vGoM'}
+
+# login
+
+http POST http://localhost:8000/accounts/api/v1/users/login/ username=+224655397937 password=19Eddu82!
+
+# get caps, radios
+
+http GET http://localhost:8000/djros/api/v1/caps/ one-token:71edf72899b0d578e2bf4cbb81f1b94343cebafa26c0682a7776279ebca1cb5a
+http GET http://localhost:8000/djros/api/v1/radios/ one-token:71edf72899b0d578e2bf4cbb81f1b94343cebafa26c0682a7776279ebca1cb5a
+
+[
+    ...
+    {
+        "bytes": "0,1026", 
+        "interface": "CAP DIXINN PORT HAP", 
+        "mac_address": "00:11:7F:46:E5:39", 
+        "rx_rate": "1Mbps", 
+        "rx_signal": "-69", 
+        "tx_rate": "1Mbps", 
+        "tx_rate_set": "CCK:1-11 OFDM:6-54 BW:1x-2x HT:0-7", 
+        "uptime": "24s530ms"
+    }, 
+    ...
+]
+
+
+
+
+# supervisor
+
+http://www.pyrunner.com/weblog/2015/10/31/master-background-tasks-celery-rabbitmq-and-supervisor/
+http://emadmokhtar.com/yet-another-and-easier-way-to-daemonize-celery.html
+https://github.com/strongloop/strong-supervisor
+
+
+# geo/markers
+
+https://github.com/philippbosch/django-geoposition
+https://github.com/madisona/django-google-maps
+http://stackoverflow.com/questions/10827613/placing-markers-on-google-map-with-django
+https://www.twilio.com/blog/2015/12/city-chat-with-python-django-and-twilio-ip-messaging.html
+
+# materials
+
+http://forms.viewflow.io/
+

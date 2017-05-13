@@ -2,8 +2,8 @@
 __author__ = 'ceduth'
 
 from rest_framework import serializers
-from djra.freeradius.models import RadUser, RadGroup
-from djra.freeradius.settings import get_setting
+from ..models import RadUser, RadGroup
+from ..settings import get_setting
 
 
 class RadUserSerializer(serializers.ModelSerializer):
@@ -25,8 +25,8 @@ class RadUserSerializer(serializers.ModelSerializer):
         # extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
-
-        groups = validated_data.get('groups', get_setting('DEFAULT_GROUP')).split(',')
+        validated_groups = validated_data.get('groups')
+        groups = validated_groups.split(',') if validated_groups else get_setting('DEFAULT_GROUPS')
         validated_data.update({'groups': groups})
 
         # we must .create() to update op, value attrs

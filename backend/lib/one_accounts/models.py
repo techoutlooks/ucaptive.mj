@@ -52,7 +52,7 @@ class OneUserManager(BaseUserManager):
 
 
 class AbstractOneUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(max_length=255, unique=True)
+    email = models.EmailField(max_length=255, unique=True, blank=True, null=True)   # not necessarily mandatory !
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
     # username = models.CharField(max_length=100, unique=True)

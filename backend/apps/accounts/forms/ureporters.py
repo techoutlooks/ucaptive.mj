@@ -7,14 +7,11 @@ __author__ = "ceduth"
 Custom form to register a U-Reporter.
 
 """
-import json
 from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
 
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import AuthenticationForm
-from registration.forms import RegistrationForm
 from lib.utils.fields.forms import EmptyChoiceField
 
 
@@ -23,10 +20,8 @@ from djng.styling.bootstrap3.forms import Bootstrap3Form
 from djng.forms import NgFormValidationMixin, NgModelFormMixin
 from djng.styling.bootstrap3.forms import Bootstrap3ModelForm
 from lib.utils.widgets.ng_dal_select2 import NgModelSelect2, NgSelect
-from dal import autocomplete
 
 from ..models import Reporter, Profile
-from apps.cities.models import Region, City
 from ..constants import (
     PHONE_NUMBER_REGEX, PHONE_NUMBER_ERROR_MSG,
     GENDER_CHOICES)

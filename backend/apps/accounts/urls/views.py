@@ -25,7 +25,7 @@ dj_urlpatterns = [
 
     # # django-registration
     # url(r'^', include('registration.backends.simple.urls')),
-    # url(r'^import/$', views.UReportDataImporterCreateView.as_view(), name='import-ureporters'),
+    url(r'^import/$', views.UReportDataImporterCreateView.as_view(), name='import-ureporters'),
 ]
 
 urlpatterns = [

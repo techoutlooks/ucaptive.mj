@@ -1,10 +1,9 @@
 const AppConstants = {
 
     // Network hosts
-    // apiUrl: 'http://ucaptivemj.cloud.com.gn',
-    // mikrotikUrl: 'http://mjrouter.cloud.com.gn',
-    apiUrl: 'http://localhost:8000',
-    mikrotikUrl: 'http://mjrouter.cloud.com.gn',
+    // apiHost: 'http://ucaptivemj.cloud.com.gn',
+    apiHost: 'http://192.168.0.13:8000',
+    mikrotikHost: 'http://mjrouter.cloud.com.gn',
 
 
     // Service routes

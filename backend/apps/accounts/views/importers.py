@@ -47,7 +47,7 @@ class UReportDataImporterCreateView(DataImporterForm):
             if owner:
                 messages.info(
                     self.request,
-                    "When importer was finished one email will send to: {0!s}".format(owner.email)
+                    "When importer will finished one email will send to: {0!s}".format(owner.email)
                 )
             else:
                 messages.info(

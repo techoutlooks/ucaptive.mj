@@ -11,7 +11,7 @@ class MikrotikHotspotUserService {
 
     login(credentials){
         return this._$http({
-            url: this._AppConstants.mikrotikUrl + '/login',
+            url: this._AppConstants.mikrotikHost + '/login',
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             data: this._$httpParamSerializerJQLike(credentials)
@@ -28,5 +28,5 @@ class MikrotikHotspotUserService {
     }
 }
 
-export {MikrotikHotspotUserService}
+export {MikrotikHotspotUserService};
 

@@ -58,8 +58,8 @@ class BaseSettings(DjROSSettingsMixin, CompressorSettingsMixin, OrgTaskSettingsM
     # INSTALLED APPS = PROJECT_APPS|CMS_APPS|BLOG_APPS|SEARCH_APPS|
     DEFAULT_APPS = (
         'paging',
-        'test_utils',
         'phonenumber_field',
+        'django_comments',                    # modified django-contrib-comments from my git repo
         # 'smart_selects',                    # provides ChainedForeignKey model used in cities app
 
         # django-filer dependencies below
@@ -84,10 +84,18 @@ class BaseSettings(DjROSSettingsMixin, CompressorSettingsMixin, OrgTaskSettingsM
         'contacts',                         # django-contacts
         'data_importer',                    # xlsx, csv to models
 
-        'djra.freeradius.apps.FreeRadiusConfig',
+        'djra.freeradius',
         'djra.radmin',
         'djra.reports',
+
+        # TODO: self ship with DjROSSettingsMixin
+        'geoposition',
         'djros',
+    )
+
+    ADMIN_APPS = (
+        'grappelli',
+        'nested_admin',
     )
 
     PROJECT_APPS = (
@@ -143,6 +151,7 @@ class BaseSettings(DjROSSettingsMixin, CompressorSettingsMixin, OrgTaskSettingsM
         'jeunesse.cloud.com.gn:8000',
         'ucaptive.cloud.com.gn',
         'jeunesse.cloud.com.gn',
+        'mjrouter.cloud.com.gn',
     )
 
     CORS_ALLOW_METHODS = (
@@ -180,7 +189,7 @@ class BaseSettings(DjROSSettingsMixin, CompressorSettingsMixin, OrgTaskSettingsM
     ############################################
     # Settings
     # Cf for djra.freeradius
-    DJRA_DEFAULT_GROUP = 'ureporters'
+    DJRA_DEFAULT_GROUPS = ('ureporters',)
 
 
     ############################################

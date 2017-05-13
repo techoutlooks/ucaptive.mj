@@ -39,6 +39,7 @@ class UserManager(OneUserManager):
         """
         if not mobile_number:
             raise ValueError(_('You must provide your U-Reporter\'s mobile phone number'))
+
         user = self.model(mobile_number=mobile_number, **extra_fields)
         user.set_password(password)
         extra_fields.setdefault('date_joined', datetime.now())
@@ -47,6 +48,7 @@ class UserManager(OneUserManager):
 
     def create_user(self, mobile_number, password=None, **extra_fields):
         extra_fields.setdefault('is_superuser', False)
+        extra_fields.setdefault('is_admin', False)
         return self._create_user(mobile_number, password, **extra_fields)
 
     def create_superuser(self, mobile_number, password, **extra_fields):
@@ -68,11 +70,21 @@ class Reporter(ModelFactoryMixin, AbstractOneUser):
     login = E.164 phone format, password =
 
     """
-    # is_staff = models.BooleanField(_('staff'), default=False)
+
+    # Whether this user can access the admin site.
+    @property
+    def is_staff(self):
+        return self.is_admin
+
+    @is_staff.setter
+    def is_staff(self, bool):
+        self.is_admin = bool
+
     # org = models.ForeignKey('orgs.Org')
     mobile_number = PhoneNumberField(unique=True)
     USERNAME_FIELD = 'mobile_number'
     REQUIRED_FIELDS = ['first_name', 'last_name']
+
     objects = UserManager()
 
     class Meta:
@@ -81,6 +93,16 @@ class Reporter(ModelFactoryMixin, AbstractOneUser):
 
     def __str__(self):
         return str(self.mobile_number)
+
+    def clean(self):
+        """ 
+        Some cleaning for Reporter instance prior saving:
+        - Make Reporter field not mandatory (to None if exists)
+        
+        Fired by presave signal @signals.run_clean() 
+        """
+        if self.email and Reporter.objects.filter(email=self.email).exists():
+            self.email = None
 
     def email_user(self, subject, message, from_email=None, **kwargs):
         """
@@ -147,8 +169,8 @@ class Profile(ModelFactoryMixin, models.Model):
 
     def __str__(self):
         # todo: ugettext_lazy support with "".format.
-        return "{0} years old {1} from {2}. Spent {3} online".\
-            format(self.age, self.gender, self.region, self.time_spend)
+        return "{age} years old {gender} from {city}, {region}. Spent {time} online".\
+            format(age=self.age, gender=self.gender, region=self.region, city=self.city, time=self.time_spend)
 
     # @classmethod
     # def create_by_import(cls, **kwargs):

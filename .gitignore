@@ -1,11 +1,14 @@
 *~
 *.pyc
 db.sqlite3*
+.idea/
+htmlcov/
 media/
 staticfiles/
 logs/
-htmlcov/
 components/bower_components/
 components/node_modules/
-doc/
-.idea/
+data/upload_history
+
+
+

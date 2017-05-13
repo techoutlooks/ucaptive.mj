@@ -121,6 +121,9 @@ class CapsMan(WrapLoggerMixin, ModelFactoryMixin, models.Model):
 
     objects = CapsManManager()
 
+    def __unicode__(self):
+        return '{name} ({ip_addr}) @{org}'.format(name=self.name, ip_addr=self.ip_addr, org=self.org)
+
     def get_org(self, id):
         """ Get Org obj from pk"""
         return self.org
@@ -257,11 +260,14 @@ class Cap(ModelFactoryMixin, models.Model):
     objects = CapQuerySet.as_manager()
 
     def clean(self):
-        """ Model validation fired by signals.run_clean """
+        """ Model validation fired by presave signal @signals.run_clean() """
 
         # convert Mikrotik bool to Python bool
         status_field_names = ('bound', 'running', 'inactive', 'disabled')
         map(lambda x: setattr(self, x, booleanify(getattr(self, x))), status_field_names)
+
+    def __unicode__(self):
+        return '{name} ({mac})'.format(name=self.name, mac=self.radio_mac)
 
 
 class RemoteCap(models.Model):

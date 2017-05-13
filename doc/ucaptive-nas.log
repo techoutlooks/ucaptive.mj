@@ -1,0 +1,36 @@
+
+migrate sites
+migrate auth
+migrate contenttypes
+   
+./manage.py migrate cities
+./manage.py migrate accounts
+./manage.py migrate
+
+
+
+(0)     [sql] = ok
+(0)   } # authorize = ok
+(0) Found Auth-Type = CHAP
+(0) # Executing group from file /etc/freeradius/sites-enabled/mikrotik
+(0)   Auth-Type CHAP {
+(0) chap: ERROR: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(0) chap: ERROR: !!! Please update your configuration so that the "known !!!
+(0) chap: ERROR: !!! good" cleartext password is in Cleartext-Password,  !!!
+(0) chap: ERROR: !!! and NOT in User-Password.                            !!!
+(0) chap: ERROR: !!!						          !!!
+(0) chap: ERROR: !!! Authentication will fail because of this.	          !!!
+(0) chap: ERROR: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(0) chap: ERROR: &control:Cleartext-Password is required for authentication
+(0)     [chap] = fail
+(0)   } # Auth-Type CHAP = fail
+(0) Failed to authenticate the user
+
+
+
+
+./manage.py migrate contenttypes
+./manage.py migrate auth
+./manage.py migrate sites
+./manage.py migrate my_custom_auth_app
+./manage.py migrate

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-08 12:27+0000\n"
-"PO-Revision-Date: 2017-05-08 12:28+0000\n"
+"POT-Creation-Date: 2017-05-08 13:39+0000\n"
+"PO-Revision-Date: 2017-05-08 13:41+0000\n"
 "Last-Translator: Edouard Carvalho <ceduth@techoutlooks.com>\n"
 "Language-Team: Support Group @TechOutlooks\n"
 "Language: en\n"
@@ -254,14 +254,11 @@ msgstr "WiFi"
 msgid "News"
 msgstr "Infos"
 
+#: apps/layout/templates/partials/about.html:22
+msgid "General information"
+msgstr "Généralités"
+
 #: apps/layout/templates/partials/about.html:23
-#| msgid ""
-#| " uCaptive is project by the State Department for Youth to close the "
-#| "digital gap, especially touching research studies.\n"
-#| "                               It also tighly integrate with UNICEF's U-"
-#| "REPORT Guinea for youth profiling. To use the u-captive portal, be sure "
-#| "first to register at:\n"
-#| "                            "
 msgid ""
 "uCaptive is project by the State Department for Youth to close the digital "
 "gap, especially touching research studies."
@@ -270,13 +267,6 @@ msgstr ""
 "l'écart numérique, en particulier touchant les études et la recherche."
 
 #: apps/layout/templates/partials/about.html:24
-#| msgid ""
-#| " uCaptive is project by the State Department for Youth to close the "
-#| "digital gap, especially touching research studies.\n"
-#| "                               It also tighly integrate with UNICEF's U-"
-#| "REPORT Guinea for youth profiling. To use the u-captive portal, be sure "
-#| "first to register at:\n"
-#| "                            "
 msgid ""
 "It also tighly integrate with UNICEF's U-REPORT Guinea for youth profiling. "
 "To use the u-captive portal, be sure first to register at:"
@@ -295,7 +285,7 @@ msgstr "Reporters"
 
 #: apps/layout/templates/partials/about.html:39
 msgid "Active"
-msgstr "Connecté"
+msgstr "Connecté(s)"
 
 #: apps/layout/templates/partials/about.html:44
 msgid "Live Usage"

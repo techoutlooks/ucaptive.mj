@@ -22,8 +22,8 @@ export default class AccountsService extends BaseApi {
         var route = username || ''; var trailingSlash = username? '/': '';
 
         return this._$http({
-            url: this._AppConstants.apiUrl + this._accountsConstants.apiUrl + route + trailingSlash,
-            headers: { "Api-Key": this._accountsConstants.apiKey},
+            url: this._AppConstants.apiHost + this._accountsConstants.accountsApiUrl + route + trailingSlash,
+            headers: { "Api-Key": this._accountsConstants.accountsApiKey},
             method: 'GET'
         }).then((res) => res.data, (err) => []);
     }

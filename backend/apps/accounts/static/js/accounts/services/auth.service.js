@@ -18,7 +18,7 @@ class Auth extends BaseApi {
         this._$timeout = $timeout;
 
         // public
-        this.apiUrl = this._AppConstants.apiUrl;
+        this.apiUrl = this._AppConstants.apiHost;
         this.api = this.setup(this.apiUrl);
         this.current = null;
     }
@@ -99,7 +99,7 @@ class Auth extends BaseApi {
 
     update(fields) {
         return this._$http({
-            url: this._AppConstants.apiUrl + '/user',
+            url: this._AppConstants.apiHost + '/user',
             method: 'PUT',
             data: {user: fields}
         }).then(

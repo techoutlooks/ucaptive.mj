@@ -14,7 +14,7 @@ export default class CapsManService {
     let endsWithSlash = macAddress? '/':'';
 
     return this._$http({
-      url: this._AppConstants.apiUrl + '/' + this._djrosConstants.djrosCapApiUrl + route + endsWithSlash,
+      url: this._AppConstants.apiHost + '/' + this._djrosConstants.djrosCapApiUrl + route + endsWithSlash,
       method: 'GET'
     }).then(
         (res) => res.data,
@@ -29,7 +29,7 @@ export default class CapsManService {
     let endsWithSlash = radioInterface? '/':'';
 
     return this._$http({
-      url: this._AppConstants.apiUrl + '/' + this._djrosConstants.djrosRadioApiUrl + route + endsWithSlash,
+      url: this._AppConstants.apiHost + '/' + this._djrosConstants.djrosRadioApiUrl + route + endsWithSlash,
       method: 'GET'
     }).then(
         (res) => res.data,

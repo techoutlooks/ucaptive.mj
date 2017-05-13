@@ -1,5 +1,4 @@
-from os.path import join, abspath
-from configurations import values
+from os.path import join
 
 
 class DataImportersettingsMixin(object):

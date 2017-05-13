@@ -1,0 +1,104 @@
+
+# test capsman singleton connection manager
+
+from djros.helpers import *
+from djros import settings as djros_settings
+
+params = dict(ip_addr='41.223.48.58', username='tcarvalho', password='Eddu!')
+RouterOSConnection.params = params
+rosc = RouterOSConnection()
+cur = rosc.execute_query(djros_settings.CAPSMAN_GET_CAPS_INTERFACES_CMD)
+cur.get()
+
+capsman1.get_connection_mgr().fetch_caps(type='interface')
+
+
+
+ ========================================================= WORKS
+capsman1 = CapsMan.objects.first()
+capsman1.sync_caps('interface')
+ ========================================================= WORKS
+
+
+
+ ========================================================= WORKS
+from djros.helpers import *
+from djros.forms import *
+cap_dict = {
+     'current-basic-rate-set': 'CCK:1-11',
+     'current-state': 'running-ap',
+     'configuration': 'cfg1-SXT',
+     'master-interface': 'none',
+     'arp-timeout': 'auto',
+     'radio-mac': 'D4:CA:6D:B7:A0:8A',
+     'bound': 'true', 'mac-address':
+     'D4:CA:6D:B7:A0:8A', 'disabled':
+     'false', 'current-rate-set':
+     'CCK:1-11 OFDM:6-54 BW:1x-2x HT:0-7',
+     'running': 'true', 'inactive':
+     'false', 'master': 'true',
+     'l2mtu': '1600', 'id':
+     '*3B', 'current-channel':
+     '2412/20-Ce/gn(30dBm)', 'name':
+     'CAP GBESSIA CENTRE SXT'
+ }
+
+cap_kwargs = hyphenate(cap_dict)
+f = CapForm(data=cap_kwargs)
+f.cleaned_data
+ ========================================================= WORKS
+
+
+
+ ========================================================= WORKS
+from djros.tasks import *
+t = SyncCapsMan()
+org = Orgs.objects.first()
+t.org_task(org)
+ ========================================================= WORKS
+
+
+
+
+
+celery -A ucaptive worker -B -l debug -s logs/celerybeat-schedule
+tail -f /srv/log/apps/ucaptive.mj/celery/celeryd.log
+tail -f /srv/log/apps/ucaptive.mj/celery/celerybeat-schedule
+
+
+WORKS [djros.tasks] ============================================
+org = Org.objects.create(name='MJ')
+capsman1 = CapsMan.objects.create(org=org, name='MJ MK TY', ip_addr='41.223.48.58', username='ucaptivemj', password='techu0910!')
+
+org = Orgs.objects.first()
+from djros.tasks import *
+capsman_sync_task = SyncCapsMan()
+capsman_sync_task.delay(org)
+ ========================================================= WORKS
+ 
+ 
+
+
+
+
+import datetime
+from apps.orgs.tasks import ScheduleTaskForActiveOrgs
+org_scheduler_task = ScheduleTaskForActiveOrgs()
+org_scheduler_task.run('djros.tasks.SyncCapsMan')
+
+
+schedule = {
+    'sync-models': {
+        kwargs= {
+            'task': 'apps.core.tasks.ScheduleTaskForActiveOrgs',
+            'schedule': datetime.timedelta(seconds=30),
+            'kwargs': {
+                'task_name': task_name,
+            },
+        }
+    }
+}
+org_scheduler_task.apply_async('djros.tasks.SyncCapsMan')
+
+
+

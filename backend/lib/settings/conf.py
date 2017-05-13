@@ -33,7 +33,7 @@ class DevSettingsMixin(object):
     ############################################
     # settings for sending mail
 
-    EMAIL_BACKEND = 'django.org.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'noreply@techoutlooks.com'
     #LOGGING['loggers']['django.security.DisallowedHost']['handlers'] =  ['null']
 
@@ -171,7 +171,7 @@ class AbstractBaseSettings(dj_mixins.AppsMixin, dj_mixins.MiddlewareMixin, dj_mi
     STATIC_ROOT = join(dirname(BASE_DIR), 'staticfiles')
 
     # Absolute path to the directory that holds media.
-    MEDIA_ROOT = join(BASE_DIR, 'media')
+    MEDIA_ROOT = DATA_DIR
 
     # URL that handles the media served from MEDIA_ROOT. Make sure to use a trailing slash.
     MEDIA_URL = "/media/"

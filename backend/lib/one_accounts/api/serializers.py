@@ -16,8 +16,8 @@ class OneUserSerializer(serializers.ModelSerializer):
 
     """
 
-    # in case customer user model might not define a 'username' field,
-    # let's strive to keep the api DRY, ie. bound to 'username' anyhow.
+    # In case customer user model might not define a 'username' field,
+    # We strive to keep the api DRY, ie. bound to 'username' anyhow.
     # eg. serialized REST response:
     #     {
     #         'profile': {

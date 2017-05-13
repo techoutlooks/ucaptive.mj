@@ -7,7 +7,7 @@ from .models import OrgApiKeyToken
 
 @admin.register(Org)
 class OrgAdmin(admin.ModelAdmin):
-    pass
+        pass
 
 
 # @admin.register(Employee)

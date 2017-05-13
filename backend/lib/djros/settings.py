@@ -82,3 +82,30 @@ class DjROSSettingsMixin(object):
     DJROS_CAPSMAN_DEFAULT_IP = values.IPValue(environ_prefix='')
     DJROS_CAPSMAN_DEFAULT_LOGIN = values.Value(environ_prefix='')
     DJROS_CAPSMAN_DEFAULT_PASSWORD = values.SecretValue(environ_prefix='')
+
+    # For geo-locating CAPs
+    GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyDD85eI1-uiNlsFDnsdh3t7dP0sNjTW2c4' # same throughout project (accounts.constants.js)
+    MAP_WIDGET_HEIGHT = 500
+    GEOPOSITION_MAP_OPTIONS = {
+        'minZoom': 3,
+        'maxZoom': 15,
+        'ceter': {'lat': 52.5, 'lng': 13.4}
+    }
+
+    @property
+    def DEFAULT_APPS(self):
+        """ Add self and CAPs locator aka. django-geoposition """
+        existing_apps = super(DjROSSettingsMixin, self).DEFAULT_APPS
+        djros_apps = ('geoposition', 'djros', 'queryset_sequence',)
+        return self.add_apps(djros_apps, existing_apps)
+
+    @property
+    def ADMIN_APPS(self):
+        """ Nest CAPs as NestedGenericTabularInline under CAPsMAN in django admin. """
+        existing_apps = super(DjROSSettingsMixin, self).ADMIN_APPS
+        djros_apps = ('dal', 'dal_select2', 'dal_queryset_sequence')
+        return self.add_apps(djros_apps, existing_apps)
+
+    # Grappelli admin theme
+    # settings.DEFAULT_APPS += ('grappelli',) already
+    GRAPPELLI_ADMIN_TITLE = 'uCaptive MJ v1.0 (Staff Only)'

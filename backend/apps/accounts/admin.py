@@ -1,8 +1,10 @@
+from django.utils.translation import ugettext_lazy as _
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from .models import Profile
+from .forms import NgProfileForm
 
 
 User = get_user_model()
@@ -10,12 +12,14 @@ User = get_user_model()
 
 class UserProfileInline(admin.StackedInline):
     model = Profile
+    # form = NgProfileForm
     can_delete = False
-    verbose_name_plural = 'Profile'
+    verbose_name_plural = 'Profiles'
     fk_name = 'reporter'
 
 
 class UserAdmin(admin.ModelAdmin):
+    search_fields = ('mobile_number', 'first_name', 'last_name')
     inlines = [UserProfileInline]
     list_display = ('mobile_number', 'email', 'first_name', 'last_name',# 'permalink',
                     'is_active', 'is_staff',)
@@ -36,5 +40,8 @@ class UserAdmin(admin.ModelAdmin):
             return list()
         return super(UserAdmin, self).get_inline_instances(request, obj)
 
+    def full_name(self, obj):
+        return obj.get_full_name()
+    full_name.short_description = _("Full Name")
 
 admin.site.register(User, UserAdmin)

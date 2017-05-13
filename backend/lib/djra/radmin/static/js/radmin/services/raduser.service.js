@@ -11,9 +11,9 @@ export default class RadUserService {
   // get single raduser or all radusers
   get(type, username) {
     let route = (type === 'radusers')? '': '?username='+username;
-    console.log("route =="+ this._AppConstants.apiUrl + '/' + this._RadminConstants.radminApiUrl + route)
+    console.log("route =="+ this._AppConstants.apiHost + '/' + this._RadminConstants.radminApiUrl + route)
     return this._$http({
-      url: this._AppConstants.apiUrl + '/' + this._RadminConstants.radminApiUrl + route,
+      url: this._AppConstants.apiHost + '/' + this._RadminConstants.radminApiUrl + route,
       method: 'GET'
     }).then(
         (res) => {
@@ -42,7 +42,7 @@ export default class RadUserService {
 
 
         return this._$http({
-            url: this._AppConstants.apiUrl + '/djra/api/v1/radusers/' + route,
+            url: this._AppConstants.apiHost + '/djra/api/v1/radusers/' + route,
             method: method,
             data: data
         }).then(

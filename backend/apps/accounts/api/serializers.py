@@ -34,8 +34,7 @@ class ReporterSerializer(serializers.ModelSerializer):
         user_data = {}
         user_fields = self.Meta.fields
         for f in user_fields:
-            user_data.update({f:validated_data.get(f)})
-        print "*** user_data %s ***" % user_data
+            user_data.update({f: validated_data.get(f)})
         reporter = Reporter(**user_data)
         reporter.set_password(validated_data['password'])
 
@@ -43,8 +42,7 @@ class ReporterSerializer(serializers.ModelSerializer):
         profile_data = {}
         profile_fields = ProfileSerializer.Meta.fields
         for f in profile_fields:
-            profile_data.update({f:validated_data.get(f)})
-        print "*** profile_data %s ***" % profile_data
+            profile_data.update({f: validated_data.get(f)})
         profile = Profile(**profile_data)
 
         # save user (and profile via signal)
@@ -53,9 +51,4 @@ class ReporterSerializer(serializers.ModelSerializer):
         return reporter
 
     # def update(self, instance, validated_data):
-    #     assert instance.username == validated_data['username']
-    #     instance.update(password=validated_data['password'],
-    #                    is_active=validated_data['is_active'],
-    #                    groups=validated_data['groups'].split(','))
-    #     instance.save()
-    #     return instance
+

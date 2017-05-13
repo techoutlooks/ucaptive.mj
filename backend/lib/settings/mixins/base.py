@@ -57,14 +57,14 @@ class AppsMixin(object):
     )
 
     ADMIN_APPS = ()
-    DEV_APPS = ('django.contrib.admindocs', 'debug_toolbar.apps.DebugToolbarConfig', 'django_extensions')
+    DEV_APPS = ('django.contrib.admindocs', 'debug_toolbar', 'django_extensions', 'test_utils')
     DEFAULT_APPS = ()
     PROJECT_APPS = ()
 
     @property
     def INSTALLED_APPS(self):
         """ Control application ordering dynamically """
-        out_apps = self.ADMIN_APPS + self.DEFAULT_APPS + self.DJANGO_APPS
+        out_apps = self.ADMIN_APPS + self.DJANGO_APPS + self.DEFAULT_APPS
         if self.DEBUG:
             out_apps += self.DEV_APPS
         return out_apps + self.PROJECT_APPS
@@ -148,7 +148,7 @@ class SendMailMixin(object):
     EMAIL_HOST_USER = 'noreply@techoutlooks.com'
     EMAIL_HOST_PASSWORD = 'techu0910!'
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-    EMAIL_BACKEND = 'django.org.mail.backends.smtp.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
     @property
     def EMAIL_SUBJECT_PREFIX(self):

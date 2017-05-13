@@ -1,0 +1,291 @@
+[
+    {
+        "bound": false, 
+        "current_channel": "", 
+        "disabled": false, 
+        "inactive": true, 
+        "name": "CAFE TASSANA HAP", 
+        "radio_mac": "", 
+        "running": false
+    }, 
+    {
+        "bound": false, 
+        "current_channel": "", 
+        "disabled": false, 
+        "inactive": true, 
+        "name": "CAP CAMAYENNE HAP", 
+        "radio_mac": "E4:8D:8C:C9:D9:E5", 
+        "running": false
+    }, 
+    {
+        "bound": false, 
+        "current_channel": "", 
+        "disabled": false, 
+        "inactive": true, 
+        "name": "CAP CAMAYENNE SXT", 
+        "radio_mac": "E4:8D:8C:D6:B2:DD", 
+        "running": false
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP COLEYAH CITE HAP", 
+        "radio_mac": "E4:8D:8C:C9:DA:58", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP COLEYAH CITE SXT", 
+        "radio_mac": "D4:CA:6D:B7:A1:29", 
+        "running": true
+    }, 
+    {
+        "bound": false, 
+        "current_channel": "", 
+        "disabled": false, 
+        "inactive": true, 
+        "name": "CAP DIXINN PORT HAP", 
+        "radio_mac": "E4:8D:8C:CC:8B:86", 
+        "running": false
+    }, 
+    {
+        "bound": false, 
+        "current_channel": "", 
+        "disabled": false, 
+        "inactive": true, 
+        "name": "CAP DIXINN PORT SXT", 
+        "radio_mac": "E4:8D:8C:D6:B3:EE", 
+        "running": false
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP GBESSIA CENTRE HAP", 
+        "radio_mac": "E4:8D:8C:CA:BA:18", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP GBESSIA CENTRE SXT", 
+        "radio_mac": "D4:CA:6D:B7:A0:8A", 
+        "running": true
+    }, 
+    {
+        "bound": false, 
+        "current_channel": "", 
+        "disabled": false, 
+        "inactive": true, 
+        "name": "CAP HAFIA-2 HAP", 
+        "radio_mac": "E4:8D:8C:CC:8E:DD", 
+        "running": false
+    }, 
+    {
+        "bound": false, 
+        "current_channel": "", 
+        "disabled": false, 
+        "inactive": true, 
+        "name": "CAP HAFIA-2 SXT", 
+        "radio_mac": "D4:CA:6D:B7:A0:99", 
+        "running": false
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP HAMDALAYE MOSQUE HAP", 
+        "radio_mac": "E4:8D:8C:4D:7A:8E", 
+        "running": true
+    }, 
+    {
+        "bound": false, 
+        "current_channel": "", 
+        "disabled": false, 
+        "inactive": true, 
+        "name": "CAP HAMDALAYE MOSQUE SXT", 
+        "radio_mac": "E4:8D:8C:D3:84:F3", 
+        "running": false
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP ISIC HAP", 
+        "radio_mac": "E4:8D:8C:C9:DA:03", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP ISIC SXT", 
+        "radio_mac": "E4:8D:8C:D6:B2:AD", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP KALOUM HAP", 
+        "radio_mac": "E4:8D:8C:CC:8D:B1", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP KALOUM SXT", 
+        "radio_mac": "D4:CA:6D:B7:A1:EC", 
+        "running": true
+    }, 
+    {
+        "bound": false, 
+        "current_channel": "", 
+        "disabled": false, 
+        "inactive": true, 
+        "name": "CAP KAPORO HAP", 
+        "radio_mac": "E4:8D:8C:CA:BA:9F", 
+        "running": false
+    }, 
+    {
+        "bound": false, 
+        "current_channel": "", 
+        "disabled": false, 
+        "inactive": true, 
+        "name": "CAP KAPORO SXT", 
+        "radio_mac": "D4:CA:6D:B7:A1:F5", 
+        "running": false
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP KOLOMA HAP", 
+        "radio_mac": "E4:8D:8C:4E:69:6C", 
+        "running": false
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP KOLOMA SXT", 
+        "radio_mac": "E4:8D:8C:D6:B4:36", 
+        "running": true
+    }, 
+    {
+        "bound": false, 
+        "current_channel": "", 
+        "disabled": false, 
+        "inactive": true, 
+        "name": "CAP MATAM HAP", 
+        "radio_mac": "E4:8D:8C:40:A1:51", 
+        "running": false
+    }, 
+    {
+        "bound": false, 
+        "current_channel": "", 
+        "disabled": false, 
+        "inactive": true, 
+        "name": "CAP MATAM SXT", 
+        "radio_mac": "E4:8D:8C:D6:B4:03", 
+        "running": false
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP MJE M_MATOTO HAP", 
+        "radio_mac": "E4:8D:8C:CC:8E:83", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP MJE M_MATOTO SXT", 
+        "radio_mac": "D4:CA:6D:B7:A1:D7", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP NONGO HAP", 
+        "radio_mac": "E4:8D:8C:C9:DA:4E", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP NONGO SXT", 
+        "radio_mac": "E4:8D:8C:D6:B4:09", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP RATOMA HAP", 
+        "radio_mac": "E4:8D:8C:CA:BA:E0", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP RATOMA SXT", 
+        "radio_mac": "D4:CA:6D:B7:A1:FB", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP TEST DT HOME SXT", 
+        "radio_mac": "E4:8D:8C:D6:B4:2D", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP YIMBAYAH HAP", 
+        "radio_mac": "E4:8D:8C:4D:7A:AC", 
+        "running": true
+    }, 
+    {
+        "bound": true, 
+        "current_channel": "2412/20-Ce/gn(30dBm)", 
+        "disabled": false, 
+        "inactive": false, 
+        "name": "CAP YIMBAYAH SXT", 
+        "radio_mac": "D4:CA:6D:B7:A2:4C", 
+        "running": true
+    }
+]
+

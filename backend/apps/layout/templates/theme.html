@@ -61,8 +61,7 @@
 
 <body ng-controller="LayoutCtrl as layout" data-spy="scroll" data-target="#onePage-nav">
 {% block layout %}
-{#    {%  include 'include/header.html' %}#}
-    {%  include 'include/bookmarks.html' %}
+{#    {%  include 'include/bookmarks.html' %}#}
     {%  include 'include/nav.html' %}
     {% block masthead %}{% endblock %}
 
@@ -73,7 +72,7 @@
     {% endblock footer %}
 {% endblock layout %}
 
-<!-- jQuery 1.12.0
+<!-- jQuery 3.+
 ============================================ -->
 {% addtoblock js %}<script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>{% endaddtoblock js %}
 {% addtoblock js %}<script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>{% endaddtoblock js %}
