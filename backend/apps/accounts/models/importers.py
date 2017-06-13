@@ -109,8 +109,8 @@ class UReportDataImporter(WrapLoggerMixin, GenericImporter):
 
     def save(self, instance=None):
         total_counts = dict(users=0, wifi_users=0, profiles=0, existed=0)
-        msg = "Done ... importing/updating {users} users, {wifi_users} and {profiles} profiles ({existed} existed) " \
-              "from xls file {file}."
+        msg = "Done ... importing/updating {users} users, {profiles} profiles ({existed} existed) " \
+              " and {wifi_users} WiFi accounts from xls file {file}."
 
         for row_num, data in self.cleaned_data:
             self.log_debug("Processing ... importing xls line #{num} !", num=row_num)

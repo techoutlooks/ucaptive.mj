@@ -16,7 +16,7 @@ import angular from 'angular';
 import 'layout';
 import 'accounts';
 import 'services';
-import 'radmin';
+import 'radmin'; 
 import 'djros';
 
 const requires = [
@@ -28,9 +28,9 @@ const requires = [
     'app.services',
     'app.layout',
     'app.accounts',
-    
-    'app.radmin',
-    'app.djros'
+
+    'app.djros',
+    'app.radmin'
 ];
 
 

@@ -134,3 +134,11 @@ class NgProfileForm(NgModelFormMixin, NgFormValidationMixin, Bootstrap3ModelForm
             self.fields[f].label = ''
             self.fields[f].help_text = ''
 
+
+from django.contrib.auth.forms import UserChangeForm, ReadOnlyPasswordHashField
+class UserAdminChangeForm(UserChangeForm):
+    password = ReadOnlyPasswordHashField(label= ("Password"),
+            help_text= ("Raw passwords are not stored, so there is no way to see "
+                        "this user's password, but you can change the password "
+                        "using <a href=\"password_change/\">this form</a>."))
+

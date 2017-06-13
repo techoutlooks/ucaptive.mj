@@ -8,11 +8,11 @@ from apps.accounts import views
 
 # Views post-processed in AngularJS
 # controller, must match value define in ng's ui-router provider.
+# Return template.
 
 ng_urlpatterns = [
     # url(r'^auth_providers/$', views.AuthProvidersPartialView.as_view(), name='ng-auth-providers'),
-    url(r'^signin/$', views.NgLoginView.as_view(scope_prefix='credentials'), name='ng-login'),
-    # url(r'^register/$', views.NgUserView.as_view(scope_prefix='credentials'), name='ng-register'),
+    url(r'^login/$', views.NgLoginView.as_view(scope_prefix='credentials'), name='ng-login'),
     url(r'^register/$', views.NgUserRegistrationView.as_view(), name='ng-register'),
     url(r'^profile/$', views.NgProfileView.as_view(), name='ng-profile'),
 ]

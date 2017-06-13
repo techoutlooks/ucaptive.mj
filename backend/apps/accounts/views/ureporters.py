@@ -8,8 +8,6 @@ AjaxContactFormView - If the form was submitted using Ajax.
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext as _
 
-from registration.backends.hmac.views import RegistrationView
-
 from ..forms.ureporters import NgLoginForm
 # from auth_views import (AjaxableLoginView, LogoutView)
 

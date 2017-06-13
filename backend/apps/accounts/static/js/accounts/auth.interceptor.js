@@ -1,3 +1,7 @@
+/*
+  Catch http request originated in this angular app only !
+ */
+
 function authInterceptor(JWT, AppConstants, $window, $q) {
   'ngInject'
 
@@ -13,18 +17,17 @@ function authInterceptor(JWT, AppConstants, $window, $q) {
       return config;
     },
 
-    // Handle 401
     responseError: function(rejection) {
+
+      // Handle 401
       if (rejection.status === 401) {
-        // clear any JWT token being stored
-        JWT.destroy();
-        // do a hard page refresh
-        $window.location.reload();
+        JWT.destroy();                    // clear any JWT token being stored
+        $window.location.reload();        // do a hard page refresh
       }
+
       return $q.reject(rejection);
     }
-
-  }
+  };
 }
 
 export default authInterceptor;

@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 export default class CapsManService {
   constructor (AppConstants, djrosConstants, $http) {
     'ngInject';

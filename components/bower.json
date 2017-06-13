@@ -23,6 +23,8 @@
     "scrollup": "^2.4.1",
     "smooth-scroll": "^1.0.1",
     "jQuery-One-Page-Nav": "^3.0.0",
-    "wow": "^1.1.2"
+    "wow": "^1.1.2",
+    "jquery.redirect": "^1.0.4",
+    "modernizr": "^3.5.0"
   }
 }

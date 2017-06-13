@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 export default class RadUserService {
   constructor (AppConstants, RadminConstants, $http) {
     'ngInject';
@@ -25,7 +27,7 @@ export default class RadUserService {
 
     //  Create, Update, Destroy a single user.
     //  PUT, DELETE, UPDATE  /djra/api/v1/radusers/{username}/$
-    doCreateUpdateDestroy(method, data) {
+    doCreateUpdateDestroyUser(method, data) {
         let route = '';
 
         switch (method){

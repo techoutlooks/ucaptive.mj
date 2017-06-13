@@ -1,24 +1,27 @@
 
-# Bootstrap
 
-Assumes npm and bower installed:
-sudo npm install -g bower gulp
+## NodeJS Prerequisites
+
+
+sudo npm cache clean -f  && sudo npm install -g n && sudo n stable      # upgrade nodejs
+sudo npm install -g bower gulp                                          # npm, bower, gulp installed system wide:
+
 
  manage.py migrate contenttypes && ./manage.py migrate auth
 ./manage.py migrate
 ./manage.py migrate --database radius
 
  cd components/ && npm install
- 
+ cd components/bower_components/modernizr && npm install
 
-## initial data
+## Load initial data
 
 ./manage.py cities_light_fixtures load
 ./manage.py loaddata ../data/fixtures/mjej_org.json
 ./manage.py loaddata ../data/fixtures/mjej_capsman.json
 
 
-## build/collect static files
+## Build and collect static files
 
 gulp build                                                              # build (only) angular apps
 ./manage.py collectstatic                                               # if Dev settings
@@ -35,6 +38,12 @@ celery -A ucaptive worker -B -l debug -s ../logs/celerybeat-schedule    # run de
 ./manage.py runserver_plus 0:8000 --configuration=Staging               # run dev webserver and
 celery worker -A ucaptive  -l DEBUG                                     # run multiple workers
 celery -A ucaptive beat -l DEBUG                                        # and schedulers
+
+
+## Mikrotik
+
+
+/ip dns static add mjrouter.cloud.com.gn 192.168.0.1                    # resolve angular api call to hotspot interface
 
 
 ## debugging

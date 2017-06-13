@@ -1,8 +1,10 @@
+/*jshint esversion: 6 */
+
 const AppConstants = {
 
     // Network hosts
     // apiHost: 'http://ucaptivemj.cloud.com.gn',
-    apiHost: 'http://192.168.0.13:8000',
+    apiHost: 'http://ucaptivemj.cloud.com.gn:8000',
     mikrotikHost: 'http://mjrouter.cloud.com.gn',
 
 
@@ -21,8 +23,9 @@ const AppConstants = {
 
     // Constants. eg.: dict keys, etc...
     jwtKey: 'jwtToken',
+
     appName: 'uCaptive',
-    identity: 'Identity'                        // currently logged in user
+    identity: 'Identity'                            // currently logged in user
 };
 
 export default AppConstants;

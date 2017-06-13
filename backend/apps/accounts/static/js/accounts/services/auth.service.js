@@ -1,3 +1,13 @@
+/**
+ *
+ * Created by ceduth on 3/2/17.
+ * @namespace app.accounts
+ * @desc Authentication service
+ */
+
+/*jshint esversion: 6 */
+
+
 import {BaseApi} from 'services/base-api.service';
 
 // todo: firebase auth
@@ -57,7 +67,7 @@ class Auth extends BaseApi {
             case 'register':
                 promise = this.register(credentials).then(
                     (res) => {
-                        self._$timeout( () => {
+                        self._$timeout(() => {
                             promise = this.login(credentials);
                         }, LOGIN_WAIT);
                     }
@@ -92,7 +102,7 @@ class Auth extends BaseApi {
                     (res) => {
                         this.current = res;
                         return res;
-                    },
+                    }
                 );
             });
     };
@@ -153,7 +163,7 @@ class Auth extends BaseApi {
 
         this.verifyAuth().then((authValid) => {
             if (authValid !== bool) {
-                this._$state.go('app.home')
+                // this._$state.go('app.home');
                 deferred.resolve(false);
             } else {
                 deferred.resolve(true);

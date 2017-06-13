@@ -1,10 +1,12 @@
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import admin
+from guardian.admin import GuardedModelAdmin
+
 from django.contrib.auth.models import Group
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from .models import Profile
-from .forms import NgProfileForm
+from .forms import NgProfileForm, UserAdminChangeForm
 
 
 User = get_user_model()
@@ -18,7 +20,8 @@ class UserProfileInline(admin.StackedInline):
     fk_name = 'reporter'
 
 
-class UserAdmin(admin.ModelAdmin):
+class UserAdmin(GuardedModelAdmin):
+    form = UserAdminChangeForm
     search_fields = ('mobile_number', 'first_name', 'last_name')
     inlines = [UserProfileInline]
     list_display = ('mobile_number', 'email', 'first_name', 'last_name',# 'permalink',
@@ -45,3 +48,4 @@ class UserAdmin(admin.ModelAdmin):
     full_name.short_description = _("Full Name")
 
 admin.site.register(User, UserAdmin)
+admin.site.register(Group)

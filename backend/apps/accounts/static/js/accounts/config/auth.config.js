@@ -1,16 +1,39 @@
+/*jshint esversion: 6 */
+
 function AuthConfig(AuthConstants, $stateProvider, $httpProvider) {
     'ngInject';
 
     $stateProvider
 
     .state('app.' + AuthConstants.USER_LOGIN, {
-        url: '/login/',
+        url: '/login/?mac&ip&username&linkOrig&linkLogin',
         controller: 'AuthCtrl as $ctrl',
-        templateUrl: '/accounts/signin/',
+        templateUrl: '/accounts/login/',                                                // rendered by my NgUserLogin Django template view
         title: 'Sign in',
-        resolve: {
-            auth: function(User) {
-                return User.ensureAuthIs(false);
+        params: {                                                                       // params as sent by Mikrotik login script
+            mac: { value: '', squash: true },                                           // client's mac
+            ip: { value: '', squash: true },                                            // client's ip
+            username: { value: '', squash: true },                                      // client's username
+            linkOrig: {                                                                 // url originally requested by user
+                value: AuthConstants.redirectSuccessDefaultUrl,                         // before being proxy checked by Mikrotik
+                squash: true
+            },
+            // linkLogin: {
+            //     value: 'https://www.google.com/',
+            //     squash: true
+            // },
+            error: {value: '', squash: true}
+        },
+        resolve: {                                                                      // disallow going to state ie., prevent login,
+            auth: function(User, HotspotUser, $state) {                                 // if and only if user if already
+                return User.ensureAuthIs(false).then((backendAuth) => {                 // is logged in to backend (backendAuth==false) AND
+                    HotspotUser.ensureAuthIs(false).then((mikrotikAuth) => {            // simultaneously logged in to Mikrotik Hotstpot (mikrotikAuth==false)
+                        console.log('Enforce login... BACKEND_NOT_LOGGED='+backendAuth + ' / MK_NOT_LOGGED='+mikrotikAuth);
+                        if (!backendAuth && !mikrotikAuth) {
+                            $state.go('app.home'); 
+                        }
+                    });
+                });
             }
         }
     })
@@ -19,7 +42,7 @@ function AuthConfig(AuthConstants, $stateProvider, $httpProvider) {
         url: '/logout/',
         template: '<div data-ng-init="$ctrl.logout()"></div>',
         controller: 'AuthCtrl as $ctrl',
-        title: 'Log out',
+        title: 'Sign out',
         resolve: {
             auth: function(User) {
                 return User.ensureAuthIs(false);
@@ -61,8 +84,8 @@ function AuthConfig(AuthConstants, $stateProvider, $httpProvider) {
                 return User.ensureAuthIs(false);
             }
         }
-    })
+    });
 
-};
+}
 
 export default AuthConfig;

@@ -1,4 +1,6 @@
-// set token to sign every request 
+/* jshint esversion: 6 */
+
+// set token to sign every request
 // with ucaptive/static/js/config/auth.interceptor.js
 
 export default class JWT {

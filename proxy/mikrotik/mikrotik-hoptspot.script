@@ -1,0 +1,20 @@
+# jun/11/2017 08:06:45 by RouterOS 6.39.1
+# Login to Mikrotik, open new terminal and paste below script
+# Mind to change hotspot-address=192.168.88.1 and smtp-server=74.125.206.108 below
+# 
+/ip hotspot profile
+add dns-name=mjrouter.cloud.com.gn hotspot-address=192.168.88.1 login-by=cookie,http-pap name=hsprof1 smtp-server=74.125.206.108 use-radius=yes
+/ip hotspot
+add address-pool=default-dhcp addresses-per-mac=1 disabled=no interface=bridge-lan name=hotspot1 profile=hsprof1
+/ip hotspot user
+add name=admin password=techu0910!
+/ip hotspot walled-garden
+add dst-host=*.gstatic.com
+add dst-host=*.googleapis.com
+/ip hotspot walled-garden ip
+add action=accept comment="Allow Django Backend" disabled=no !dst-address dst-host=ucaptivemj.cloud.com.gn !dst-port !protocol !src-address
+add action=accept comment="Allow Radius server" disabled=no !dst-address dst-host=ns1.cloud.com.gn !dst-port !protocol !src-address
+add action=accept comment="Allow SMTP" disabled=no !dst-address dst-host=*.gmail.com !dst-port !protocol !src-address
+add action=accept disabled=no !dst-address dst-host=*.googleapis.com !dst-port !protocol !src-address
+add action=accept disabled=no !dst-address dst-host=*.gstatic.com !dst-port !protocol !src-address
+

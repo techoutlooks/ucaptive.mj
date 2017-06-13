@@ -8,12 +8,15 @@ from os.path import exists, join, dirname, abspath, pardir
 from lib.settings.conf import AbstractBaseSettings
 from lib.settings.mixins import CompressorSettingsMixin
 from lib.djros.settings import DjROSSettingsMixin
+
+from apps.accounts.settings import UreportersSettingsMixins
 from apps.orgs.settings import OrgTaskSettingsMixin
 from apps.cities.settings import CitiesSettingsMixin
 from ..mixins import DataImportersettingsMixin
 
 
-class BaseSettings(DjROSSettingsMixin, CompressorSettingsMixin, OrgTaskSettingsMixin, DataImportersettingsMixin, CitiesSettingsMixin, AbstractBaseSettings):
+class BaseSettings(DjROSSettingsMixin, CompressorSettingsMixin, OrgTaskSettingsMixin, DataImportersettingsMixin,
+                   CitiesSettingsMixin, UreportersSettingsMixins, AbstractBaseSettings):
     """ Basic Django configuration """
 
     ############################################
@@ -76,6 +79,8 @@ class BaseSettings(DjROSSettingsMixin, CompressorSettingsMixin, OrgTaskSettingsM
         'rest_framework',                   # DRF3
         'rest_framework_api_key',
         'djng',                             # django-angular
+
+        'guardian',
 
         # TODO: make package
         # my libs
