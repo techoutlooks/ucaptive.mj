@@ -9,19 +9,19 @@ as part of the questionnaire.
 ## Features
 
 - Centralized storage and management of router configuration and user crendentials.
-- Displays heartbeats of the 32 routers deployed across Conakry (status, traffic usage per location).
-- Django admin views to export user records as CSV, XLSX
+- Displays heartbeats of the 32 routers deployed across Conakry in the City map (status, traffic usage per location).
+- Export user records to CSV, XLSX
   
 ## Stack
 
 - Python/Django MVT
-- Single Page Application (SPA) displaying a Single-Sign-On widget
+- AngularJS Single Page Application (SPA) displaying a Single-Sign-On widget
 - [Google Maps API](https://developers.google.com/maps) integration
 - [FreeRADIUS](https://freeradius.org/) v3 AAA integration
 - [Mikrotik](https://mikrotik.com/) router integration
 
 ## Doc
 
-* [Backend](./backend/readme.md#backend)
-* [Frontend](./backend/readme.md#uiux-angularjs)
+* Django [Backend](./backend/readme.md#backend)
+* AnguarJS [Frontend](./backend/readme.md#uiux-angularjs)
 
